@@ -1,0 +1,12 @@
+# pok-collecting_update_collection
+
+Just a personal project to update my collection
+
+- **Repositorio**: [alesop95/pok-collecting_update_collection](https://github.com/alesop95/pok-collecting_update_collection)
+- **Lenguaje principal**: Python
+- **Última actualización**: 2026-07-06
+- **Carpeta local**: `pok-collecting_update_collection`
+
+Un compañero de seguimiento de precios para una colección personal de cartas Pokémon TCG guardada en un libro de Excel. En lugar de sustituir la hoja de cálculo, el script la trata como fuente de verdad: lee qué cartas se poseen directamente del libro mediante automatización COM (xlwings), obtiene los precios de mercado actuales desde la API REST de CardTrader v2, y escribe una caché de búsqueda además de fórmulas listas para pegar, de modo que Excel pueda mostrar precios actualizados mediante búsquedas al estilo XLOOKUP. Una base de datos SQLite mantiene un historial de precios de solo adición, para que las tendencias no se pierdan entre ejecuciones.
+
+Se construyó después de que Cardmarket cerrara su API pública de precios en 2024, lo que obligó a cambiar a CardTrader como única fuente de datos restante. Un script de descubrimiento hace un fuzzy-matching entre los nombres de las hojas del libro y el catálogo de expansiones de la API, para generar el mapeo hoja-expansión inicial, ya que los nombres de las hojas de Excel no coinciden de forma limpia con los identificadores de la API. Las fórmulas de búsqueda generadas se producen en sintaxis de Excel en italiano (separadas por punto y coma, con nombres de función localizados), un detalle que refleja la naturaleza de un solo usuario y una sola configuración regional de la herramienta, más que cualquier intento de portabilidad.

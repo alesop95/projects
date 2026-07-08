@@ -1,0 +1,12 @@
+# telegram-drive-secure
+
+A customization from the https://github.com/caamer20/Telegram-Drive repo without forking it.
+
+- **Repository**: [alesop95/telegram-drive-secure](https://github.com/alesop95/telegram-drive-secure)
+- **Linguaggio principale**: TypeScript
+- **Ultimo aggiornamento**: 2026-07-02
+- **Cartella locale**: `telegram-drive-secure-fork`
+
+Questo e' una personalizzazione dell'app desktop open source caamer20/Telegram-Drive, non un progetto scritto in modo indipendente ne' un fork GitHub formale: il codice a monte (Tauri, Rust, React, che usa i server stessi di Telegram come backend per i file, con i canali al posto delle cartelle) e' stato importato a un commit a monte fissato senza preservarne la cronologia dei commit originale, una decisione registrata esplicitamente nelle note del progetto stesso. L'obiettivo dichiarato e' aggiungere una cifratura end-to-end lato client dei file prima dell'upload e un irrobustimento generale della superficie di attacco sopra l'app importata, ma alla data degli ultimi commit sono effettivamente atterrate solo due modifiche: l'import pulito in se', e un passaggio che rimuove i riferimenti all'autore originale dall'identificatore dell'app e dal nome del prodotto, oltre a una revisione del workflow CI ereditato. Il modulo di cifratura e il piu' ampio lavoro di hardening sono ancora pianificati, non implementati.
+
+Da notare per chi legge il codice: il README a monte dichiara una licenza MIT, ma nessun file `LICENSE` era presente nell'albero dei sorgenti importato, una discrepanza che la documentazione del progetto segnala come irrisolta invece di sorvolarci sopra. Il valore di questo progetto al momento sta soprattutto nei documenti di pianificazione, nel threat model e nella roadmap a fasi che porta avanti a partire dalla decisione di fork, non in funzionalita' di sicurezza gia' consegnate.

@@ -1,0 +1,87 @@
+site_name: Alessio Sopranzi - Projects
+site_description: Navigator of personal and professional software/hardware projects
+site_url: https://alesop95.github.io/projects/
+
+theme:
+  name: material
+  language: it
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+# Icone footer (Material le mostra accanto alla nota "Made with Material for MkDocs", che
+# resta perche' non impostiamo extra.generator: false).
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/alessio-sopranzi
+      name: LinkedIn
+    - icon: fontawesome/brands/github
+      link: https://github.com/alesop95
+      name: GitHub
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/alesop95
+      name: Telegram
+    - icon: fontawesome/solid/envelope
+      link: mailto:alessio.sopranzi.95@gmail.com
+      name: Email
+
+# Nessuna chiave "nav" esplicita: MkDocs genera la navigazione automaticamente dalla struttura
+# di docs/ (ordine alfabetico per cartella/file). Scelta deliberata (2026-07-07): gli script di
+# aggiornamento aggiungono/rimuovono pagine in docs/personal/ e docs/company/ senza dover anche
+# riscrivere una lista di navigazione qui, altrimenti ogni esecuzione dovrebbe fare il parsing e
+# la riscrittura sicura di questo file YAML.
+
+# File con prefisso "_" sono materiale editoriale ad uso interno (es. _template.md in
+# docs/company/), non pagine del sito pubblico.
+exclude_docs: |
+  _*.md
+
+# Struttura a suffisso (docs_structure: suffix): i file senza suffisso sono l'italiano
+# (lingua di default), le traduzioni vivono accanto come <nome>.en.md / <nome>.es.md.
+# fallback_to_default: le pagine non ancora tradotte restano visibili in italiano invece di
+# dare 404, cosi' la traduzione di personal/ e company/ (35 pagine) puo' avanzare una pagina
+# alla volta come lavoro di contenuto separato, senza bloccare il meccanismo gia' attivo.
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: it
+          default: true
+          name: Italiano
+          build: true
+        - locale: en
+          name: English
+          build: true
+        - locale: es
+          name: Español
+          build: true
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true

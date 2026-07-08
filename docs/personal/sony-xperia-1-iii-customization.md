@@ -1,0 +1,12 @@
+# sony-xperia-1-III-customization
+
+_Nessuna descrizione su GitHub._
+
+- **Repository**: [alesop95/sony-xperia-1-III-customization](https://github.com/alesop95/sony-xperia-1-III-customization)
+- **Linguaggio principale**: Python
+- **Ultimo aggiornamento**: 2026-07-06
+- **Cartella locale**: `sony-xperia-1-III-customization`
+
+Un progetto di documentazione e tooling attorno alla personalizzazione di un Sony Xperia 1 III (nome in codice pdx215) con LineageOS 22.2, organizzato come un insieme di runbook che coprono setup software, audio, foto/video e gaming, insieme a una piccola raccolta di script standalone. Il tooling include script PowerShell e shell per il preflight-check del telefono e l'installazione batch di APK via ADB, uno scheletro di modulo Magisk, e un insieme di script Python di analisi audio (audit spettrale, calcolo di benchmark e confronto di tracce rispetto a master di riferimento) costruiti per valutare la qualità di file musicali ad alta risoluzione rispetto ai master sorgente per il percorso audio del dispositivo.
+
+Uno script separato converte un grande .docx sorgente (tenuto in locale, fuori dal controllo di versione) nella documentazione Markdown tracciata nel repository, il che spiega perché la documentazione è strutturata come runbook generati piuttosto che come pagine scritte a mano. Si tratta di un progetto personale di configurazione del dispositivo piuttosto che di una libreria riusabile: il valore sta nelle note accumulate, nelle checklist e nei piccoli script di verifica, non in un deliverable confezionato.

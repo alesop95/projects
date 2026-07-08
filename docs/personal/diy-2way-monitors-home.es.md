@@ -1,0 +1,12 @@
+# diy-2way-monitors-home
+
+_Sin descripción en GitHub._
+
+- **Repositorio**: [alesop95/diy-2way-monitors-home](https://github.com/alesop95/diy-2way-monitors-home)
+- **Lenguaje principal**: PowerShell
+- **Última actualización**: 2026-07-06
+- **Carpeta local**: `diy-2way-monitors-home`
+
+Este repositorio es un espacio de planificación para la construcción DIY de un par de monitores de estudio de dos vías y sus correspondientes crossovers activos para uso doméstico, todavía no un proyecto implementado. Tal como está, la carpeta local y el repositorio versionado contienen solo el scaffolding del proyecto, notas escritas, enlaces de referencia y un documento de trabajo sobre electroacústica: no hay diseño de crossover, ningún modelo de caja acústica ni código alguno confirmado hasta ahora, por lo que es mejor interpretarlo como un esfuerzo de investigación personal en fase temprana y no como una construcción terminada.
+
+El alcance descrito en las notas del proyecto es un flujo de trabajo electroacústico de extremo a extremo: mediciones calibradas de la posición de escucha real, diseño de drivers y crossover, análisis de modos de la sala y simulación acústica 3D para predecir el comportamiento de radiación on-axis y off-axis. La toolchain prevista ejecuta Akabak, un simulador acústico de elementos de contorno (boundary-element), bajo Wine en Ubuntu Studio, combinando una herramienta de medición que de otro modo sería solo para Windows con una estación de trabajo de audio Linux. Hasta que los datos de medición y los archivos de diseño lleguen al repositorio, el proyecto debe considerarse una intención documentada y no un diseño funcional.

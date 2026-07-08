@@ -1,0 +1,30 @@
+/*
+Palette allineata a main.tex (E:\my-cv), sezione "COLOR MODIFICATION SECTION":
+  DarkBlue      #172B45
+  MediumBlue    #3D5A8C
+  NavyBlue      #091F3A
+  SoftBlue      #2E4A7D  (accent nel CV)
+  LightSkyBlue  #8AA7CC
+
+Material for MkDocs non supporta colori arbitrari tramite la chiave "palette" di mkdocs.yml
+(accetta solo nomi predefiniti come "indigo", "teal", ecc.): per un colore esatto si sovrascrivono
+le variabili CSS del tema, sia per lo schema chiaro (default) sia per quello scuro (slate).
+*/
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #091F3A;
+  --md-primary-fg-color--light: #2E4A7D;
+  --md-primary-fg-color--dark: #172B45;
+  --md-accent-fg-color: #2E4A7D;
+  --md-accent-fg-color--transparent: #2E4A7D1a;
+  --md-typeset-a-color: #2E4A7D;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #172B45;
+  --md-primary-fg-color--light: #3D5A8C;
+  --md-primary-fg-color--dark: #091F3A;
+  --md-accent-fg-color: #8AA7CC;
+  --md-accent-fg-color--transparent: #8AA7CC1a;
+  --md-typeset-a-color: #8AA7CC;
+}

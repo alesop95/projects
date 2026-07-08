@@ -1,0 +1,12 @@
+# telegram-bot
+
+_No description on GitHub._
+
+- **Repository**: [alesop95/telegram-bot](https://github.com/alesop95/telegram-bot)
+- **Main language**: Python
+- **Last updated**: 2026-07-06
+- **Local folder**: `telegram-bot`
+
+A Telegram bot built on python-telegram-bot with a dual persistence backend, SQLite for local runs and PostgreSQL for cloud deployment, chosen via separate entry points (`main.py` versus `main_cloud.py`) rather than a single runtime switch. Around its handler layer it offers formatted custom messages with inline buttons, reusable templates, five selectable chat themes, per-user settings (notifications, language, timezone), and both personal and admin-facing usage statistics, aiming to replicate a slice of Telegram Premium's personalization features without the subscription. It ships with a small FastAPI-style health endpoint, Docker and docker-compose files, and deployment configs for Railway and Render alongside a GitHub Actions workflow.
+
+The bot's own command list flags scheduled message delivery as still "in development," so the feature set described in its README is only partially complete rather than fully live. Structurally it is a straightforward, single-purpose bot rather than a framework: handlers, database managers, and configuration are cleanly separated, but there is no plugin system or multi-bot orchestration beyond what the two entry points provide.

@@ -1,0 +1,18 @@
+# Materiale di pianificazione locale (architettura multi-repo, roadmap interna): discusso e
+# aggiornato dalla sessione my-cv, mai destinato al repository pubblico. Stessa convenzione di
+# _notes/ in my-cv.
+_notes/
+
+# Manifesto locale di check_company_changes.py: contiene i nomi reali delle cartelle progetto
+# sotto D:\, che possono rivelare nomi di clienti/progetti aziendali. Mai nel repo pubblico.
+data/company_manifest.json
+
+# Build MkDocs
+_site/
+site/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,12 @@
+# harmony-book
+
+The technical under the hood of my book writing
+
+- **Repository**: [alesop95/harmony-book](https://github.com/alesop95/harmony-book)
+- **Linguaggio principale**: PowerShell
+- **Ultimo aggiornamento**: 2026-07-06
+- **Cartella locale**: `harmony-book`
+
+Questo repository non è un progetto software ma la toolchain di pubblicazione per un libro di armonia occidentale (teoria musicale): versiona il metodo tipografico e la pipeline di build, non il manoscritto stesso. La composizione usa LuaLaTeX con la classe memoir per Unicode e font OpenType nativi, LilyPond incorporato tramite lilypond-book per gli esempi musicali, biblatex/biber per la bibliografia e imakeidx/glossaries per indice e glossario; l'intero ambiente TeX è un'installazione TinyTeX riproducibile e locale all'utente, descritta da un manifesto di pacchetti, così che la build sia portabile tra Windows e Linux.
+
+I capitoli veri e propri, gli esempi musicali e la bibliografia del libro vivono in una cartella `manuscript/` deliberatamente inserita in gitignore e tenuta fuori da questo repository pubblico, poiché quel contenuto è destinato alla vendita anziché alla pubblicazione; solo un documento minimo `sample/` viene incluso qui per dimostrare che la catena di build funziona end-to-end. Ciò che è pubblico, in altre parole, è la struttura riutilizzabile, le macro e gli script di build per autopubblicare un libro fortemente impaginato e denso di notazione musicale con LaTeX, non il testo finito.

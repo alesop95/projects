@@ -1,0 +1,12 @@
+# spanish-learning
+
+_Sin descripción en GitHub._
+
+- **Repositorio**: [alesop95/spanish-learning](https://github.com/alesop95/spanish-learning)
+- **Lenguaje principal**: Python
+- **Última actualización**: 2026-07-07
+- **Carpeta local**: `spanish-learning`
+
+Esto no es una aplicación de software sino un sistema agéntico de tutoría de español construido sobre Claude Code. Tres capas desacopladas hacen el trabajo: una base de conocimiento local ensamblada por un script de ingesta de coste LLM cero que recorre una biblioteca personal de libros y documentos (PDF, DOCX, PPTX, XLSX, HTML, con un fallback OCR para los volúmenes escaneados) y produce una caché en Markdown con un índice por documento; un motor de repetición espaciada pensado para funcionar a través del puente `ankimcp/anki-mcp-server` hacia una instalación local de Anki; y una capa de orquestación de tres subagentes de Claude, tutor, kb-retriever y examiner, conectados a comandos slash (`/profile`, `/learn`, `/review`) que construyen un perfil del alumno y una hoja de ruta pedagógica, imparten lecciones fundamentadas únicamente en material fuente citado, y cierran cada sesión con una verificación de recuperación activa (active recall) antes de marcar un módulo como completado.
+
+Un artefacto concreto ya generado es un mazo de Anki personalizado de falsos amigos italiano-español, producido por un pequeño script a partir de una lista de palabras curada, ya que ningún mazo público cubre ese patrón de interferencia específico. Según el propio rastreador de estado del proyecto, la base de conocimiento y el primer perfil del alumno están construidos, pero Anki desktop y AnkiConnect todavía no están conectados en vivo y ninguna lección se ha entregado realmente de principio a fin, por lo que este proyecto se entiende mejor como un scaffold funcional para un flujo de aprendizaje personal que como una herramienta terminada.

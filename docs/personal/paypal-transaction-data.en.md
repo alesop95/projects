@@ -1,0 +1,12 @@
+# paypal-transaction-data
+
+_No description on GitHub._
+
+- **Repository**: [alesop95/paypal-transaction-data](https://github.com/alesop95/paypal-transaction-data)
+- **Main language**: Python
+- **Last updated**: 2026-07-06
+- **Local folder**: `paypal-transaction-data`
+
+A Python command-line tool that pulls transaction history from the PayPal REST API and syncs it into a Google Sheet, keeping a running ledger for bookkeeping purposes. It extracts the fields that matter for accounting reconciliation, such as transaction and reference identifiers, gross and net amounts, fees, currency, status, and payer details, and writes them into a formatted sheet while skipping records that were already synced. A separate Excel export path exists alongside the Google Sheets one.
+
+The tool supports both PayPal sandbox and live modes and can run as a one-off sync, a sync over a specific date range, or a scheduled job at a configurable interval, with a status subcommand to check API connectivity. Credentials for both PayPal and Google are kept out of source control via environment variables and an OAuth credentials file. It is a personal accounting utility built to remove the manual work of copying PayPal statements into a spreadsheet, not a general-purpose financial product; the repository intentionally contains only the code and setup instructions, not real transaction data.
