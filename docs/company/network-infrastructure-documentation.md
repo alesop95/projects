@@ -27,6 +27,11 @@ completo dello stato corrente dell'infrastruttura virtualizzata, così che il do
 resti sempre allineato alla realtà invece di andare disallineato nel tempo. Gli indirizzi IP reali
 dell'infrastruttura restano fuori dal repository versionato.
 
+![Distribuzione degli interventi di rete per area di competenza](../assets/network-interventions-overview.svg)
+
+*Conteggio aggregato per area di competenza, senza alcun dettaglio su cliente, IP o data
+specifica dei singoli interventi.*
+
 ## Risultato
 
 Una fonte di verità unica e aggiornabile per lo stato della rete, che riduce la dipendenza dalla

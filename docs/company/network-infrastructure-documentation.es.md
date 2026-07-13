@@ -27,6 +27,11 @@ snapshot completo del estado actual de la infraestructura virtualizada, de modo 
 técnico se mantenga siempre alineado con la realidad en lugar de desactualizarse con el tiempo.
 Las direcciones IP reales de la infraestructura quedan fuera del repositorio versionado.
 
+![Intervenciones de red por área de competencia](../assets/network-interventions-overview.es.svg)
+
+*Recuento agregado por área de competencia, sin ningún detalle sobre cliente, IP o fecha
+específica de las intervenciones individuales.*
+
 ## Resultado
 
 Una fuente de verdad única y actualizable para el estado de la red, que reduce la dependencia del

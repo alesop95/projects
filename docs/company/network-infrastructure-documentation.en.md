@@ -26,6 +26,11 @@ produces a complete snapshot of the current state of the virtualized infrastruct
 technical document stays aligned with reality instead of drifting out of date over time. The
 infrastructure's real IP addresses are kept out of the versioned repository.
 
+![Network interventions by area of competence](../assets/network-interventions-overview.en.svg)
+
+*Aggregate count by area of competence, with no detail on client, IP address, or the specific
+date of individual interventions.*
+
 ## Result
 
 A single, updatable source of truth for the state of the network, which reduces dependence on the
