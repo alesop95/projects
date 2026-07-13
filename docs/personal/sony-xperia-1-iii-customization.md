@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/sony-xperia-1-III-customization](https://github.com/alesop95/sony-xperia-1-III-customization)
-- **Linguaggio principale**: Python
+- **Linguaggi**: Python, PowerShell, Shell, JavaScript
+- **Data di inizio**: 2026-07
 - **Ultimo aggiornamento**: 2026-07-06
 - **Cartella locale**: `sony-xperia-1-III-customization`
 

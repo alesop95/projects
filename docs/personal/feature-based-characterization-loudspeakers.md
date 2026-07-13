@@ -3,7 +3,8 @@
 Master Degree project
 
 - **Repository**: [alesop95/feature-based_characterization_loudspeakers](https://github.com/alesop95/feature-based_characterization_loudspeakers)
-- **Linguaggio principale**: MATLAB
+- **Linguaggi**: MATLAB, HTML, Python
+- **Data di inizio**: 2026-03
 - **Ultimo aggiornamento**: 2026-06-23
 - **Cartella locale**: `feature-based_characterization_loudspeakers`
 

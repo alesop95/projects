@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/paypal-transaction-data](https://github.com/alesop95/paypal-transaction-data)
-- **Linguaggio principale**: Python
+- **Linguaggi**: Python, PowerShell, Shell, JavaScript
+- **Data di inizio**: 2026-06
 - **Ultimo aggiornamento**: 2026-07-06
 - **Cartella locale**: `paypal-transaction-data`
 

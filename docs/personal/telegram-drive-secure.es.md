@@ -3,7 +3,8 @@
 A customization from the https://github.com/caamer20/Telegram-Drive repo without forking it.
 
 - **Repositorio**: [alesop95/telegram-drive-secure](https://github.com/alesop95/telegram-drive-secure)
-- **Lenguaje principal**: TypeScript
+- **Lenguajes**: TypeScript, Rust, PowerShell, Python
+- **Fecha de inicio**: 2026-07
 - **Última actualización**: 2026-07-02
 - **Carpeta local**: `telegram-drive-secure-fork`
 

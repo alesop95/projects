@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/home-recording-training-mixing-setup](https://github.com/alesop95/home-recording-training-mixing-setup)
-- **Linguaggio principale**: PowerShell
+- **Linguaggi**: PowerShell, Shell, Python, JavaScript
+- **Data di inizio**: 2026-06
 - **Ultimo aggiornamento**: 2026-07-06
 - **Cartella locale**: `home-recording-training-mixing-setup`
 

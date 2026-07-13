@@ -3,7 +3,8 @@
 _No description on GitHub._
 
 - **Repository**: [alesop95/local-audio-transcriptor](https://github.com/alesop95/local-audio-transcriptor)
-- **Main language**: Python
+- **Languages**: Python, PowerShell, Shell, JavaScript
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `local-audio-transcriptor`
 

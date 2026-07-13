@@ -3,7 +3,8 @@
 _Sin descripción en GitHub._
 
 - **Repositorio**: [alesop95/trader-bot](https://github.com/alesop95/trader-bot)
-- **Lenguaje principal**: Python
+- **Lenguajes**: Python, PowerShell, Shell, JavaScript
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-07-06
 - **Carpeta local**: `trader-bot`
 

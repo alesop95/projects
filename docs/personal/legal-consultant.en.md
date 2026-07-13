@@ -3,7 +3,8 @@
 Local-first project to navigate through Italian legislation with a simple MCP server
 
 - **Repository**: [alesop95/legal-consultant](https://github.com/alesop95/legal-consultant)
-- **Main language**: Python
+- **Languages**: Python, PowerShell, Shell, JavaScript
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `legal-consultant`
 

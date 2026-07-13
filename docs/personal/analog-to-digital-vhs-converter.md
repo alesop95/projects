@@ -3,7 +3,8 @@
 A personal project to collect memories coming from tapes
 
 - **Repository**: [alesop95/analog-to-digital-VHS-converter](https://github.com/alesop95/analog-to-digital-VHS-converter)
-- **Linguaggio principale**: PowerShell
+- **Linguaggi**: PowerShell, Shell, Python, JavaScript
+- **Data di inizio**: 2026-06
 - **Ultimo aggiornamento**: 2026-07-06
 - **Cartella locale**: `analog-to-digital-VHS-converter`
 

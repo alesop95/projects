@@ -3,7 +3,8 @@
 _Sin descripción en GitHub._
 
 - **Repositorio**: [alesop95/civitanext](https://github.com/alesop95/civitanext)
-- **Lenguaje principal**: HTML
+- **Lenguajes**: HTML, JavaScript, PowerShell, Shell
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-07-06
 - **Carpeta local**: `civitanext`
 

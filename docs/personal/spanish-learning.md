@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/spanish-learning](https://github.com/alesop95/spanish-learning)
-- **Linguaggio principale**: Python
+- **Linguaggi**: Python, PowerShell, Shell, JavaScript
+- **Data di inizio**: 2026-07
 - **Ultimo aggiornamento**: 2026-07-07
 - **Cartella locale**: `spanish-learning`
 

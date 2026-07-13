@@ -3,7 +3,8 @@
 Bachelor degree project
 
 - **Repository**: [alesop95/gps-time-synchronization-arduino-stm32](https://github.com/alesop95/gps-time-synchronization-arduino-stm32)
-- **Main language**: C
+- **Languages**: C, C++, Python
+- **Start date**: 2026-01
 - **Last updated**: 2026-06-23
 - **Local folder**: `gps-time-synchronization-arduino-stm32`
 

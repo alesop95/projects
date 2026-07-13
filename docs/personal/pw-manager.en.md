@@ -3,7 +3,8 @@
 A complete 24/7 workflow for personal password management, secrets, authenticator with vaultwarden and enteAuth
 
 - **Repository**: [alesop95/pw-manager](https://github.com/alesop95/pw-manager)
-- **Main language**: PowerShell
+- **Languages**: PowerShell, Shell, Python, JavaScript
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `pw-manager`
 

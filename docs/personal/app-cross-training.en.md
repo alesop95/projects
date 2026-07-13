@@ -3,6 +3,8 @@
 _No description on GitHub._
 
 - **Repository**: [alesop95/app-cross-training](https://github.com/alesop95/app-cross-training)
+- **Languages**: -
+- **Start date**: 2026-06
 - **Last updated**: 2026-06-23
 - **Local folder**: `app-cross-training`
 

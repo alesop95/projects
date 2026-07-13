@@ -3,6 +3,8 @@
 _Sin descripción en GitHub._
 
 - **Repositorio**: [alesop95/app-cross-training](https://github.com/alesop95/app-cross-training)
+- **Lenguajes**: -
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-06-23
 - **Carpeta local**: `app-cross-training`
 

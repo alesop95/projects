@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/discoteca-api](https://github.com/alesop95/discoteca-api)
-- **Linguaggio principale**: PowerShell
+- **Linguaggi**: PowerShell, Shell, Python, TypeScript
+- **Data di inizio**: 2025-05
 - **Ultimo aggiornamento**: 2026-07-06
 - **Cartella locale**: `discoteca-api`
 

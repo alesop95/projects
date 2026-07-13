@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/gesture_glove_harmonizer](https://github.com/alesop95/gesture_glove_harmonizer)
-- **Linguaggio principale**: JavaScript
+- **Linguaggi**: JavaScript, CSS, HTML, MATLAB
+- **Data di inizio**: 2019-03
 - **Ultimo aggiornamento**: 2026-06-23
 - **Cartella locale**: `gesture_glove_harmonizer`
 

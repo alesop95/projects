@@ -3,7 +3,8 @@
 Just a personal project to update my collection
 
 - **Repository**: [alesop95/pok-collecting_update_collection](https://github.com/alesop95/pok-collecting_update_collection)
-- **Main language**: Python
+- **Languages**: Python, PowerShell, Shell, JavaScript
+- **Start date**: 2026-05
 - **Last updated**: 2026-07-06
 - **Local folder**: `pok-collecting_update_collection`
 

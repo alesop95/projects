@@ -3,8 +3,9 @@
 Customized wedding planner app
 
 - **Repository**: [alesop95/my-wedding-day](https://github.com/alesop95/my-wedding-day)
-- **Main language**: TypeScript
-- **Last updated**: 2026-07-07
+- **Languages**: TypeScript, PowerShell, Shell, Python
+- **Start date**: 2026-04
+- **Last updated**: 2026-07-08
 - **Local folder**: `my-wedding-day`
 
 A React 18 and TypeScript single-page application built to run an actual wedding's guest-facing logistics, deployed as a static site on Firebase Hosting backed by Firestore and Cloud Functions rather than a custom server. Guests move through dedicated sections for RSVP, hotel and venue information, the evening program, a gift registry, a collaborative guestbook, photo sharing, and a playlist/song-suggestion feature that integrates with the Spotify API through a dedicated OAuth setup script. A password-gated admin area, separate from the guest-facing app, covers guest-list management with family grouping, restaurant table/seating assignment, menu editing, moderation of guestbook entries and song suggestions, vendor tracking, and a reporting view, while Cloud Functions handle server-side concerns such as staff authentication, scheduled RSVP email reminders, and guest-record cleanup and migration scripts.

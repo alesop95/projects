@@ -3,7 +3,8 @@
 _Nessuna descrizione su GitHub._
 
 - **Repository**: [alesop95/harmonic-tension-vst3](https://github.com/alesop95/harmonic-tension-vst3)
-- **Linguaggio principale**: C++
+- **Linguaggi**: C++
+- **Data di inizio**: 2019-12
 - **Ultimo aggiornamento**: 2026-06-23
 - **Cartella locale**: `harmonic-tension-vst3`
 

@@ -3,7 +3,8 @@
 The technical under the hood of my book writing
 
 - **Repository**: [alesop95/harmony-book](https://github.com/alesop95/harmony-book)
-- **Main language**: PowerShell
+- **Languages**: PowerShell, Shell, Python, JavaScript
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `harmony-book`
 

@@ -3,7 +3,8 @@
 A personal repo to develop new crossword games (italian language)
 
 - **Repository**: [alesop95/crosswords](https://github.com/alesop95/crosswords)
-- **Main language**: TypeScript
+- **Languages**: TypeScript, PowerShell, Shell, Python
+- **Start date**: 2026-07
 - **Last updated**: 2026-07-06
 - **Local folder**: `crosswords`
 

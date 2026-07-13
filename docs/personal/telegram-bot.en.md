@@ -3,7 +3,8 @@
 _No description on GitHub._
 
 - **Repository**: [alesop95/telegram-bot](https://github.com/alesop95/telegram-bot)
-- **Main language**: Python
+- **Languages**: Python, Shell, PowerShell, JavaScript
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `telegram-bot`
 

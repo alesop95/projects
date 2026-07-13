@@ -3,7 +3,8 @@
 A customizable tool for building competitive teams for pokèmon champions
 
 - **Repository**: [alesop95/pok--competitive-teambuilder](https://github.com/alesop95/pok--competitive-teambuilder)
-- **Main language**: TypeScript
+- **Languages**: TypeScript, PowerShell, Shell, Python
+- **Start date**: 2026-06
 - **Last updated**: 2026-07-06
 - **Local folder**: `pokè-competitive-teambuilder`
 

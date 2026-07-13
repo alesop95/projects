@@ -3,7 +3,8 @@
 _Sin descripción en GitHub._
 
 - **Repositorio**: [alesop95/diy-2way-monitors-home](https://github.com/alesop95/diy-2way-monitors-home)
-- **Lenguaje principal**: PowerShell
+- **Lenguajes**: PowerShell, Shell, Python, JavaScript
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-07-06
 - **Carpeta local**: `diy-2way-monitors-home`
 

@@ -3,7 +3,8 @@
 A tool for investigating statistic pattern in the historical italian betting game
 
 - **Repositorio**: [alesop95/totocalcio](https://github.com/alesop95/totocalcio)
-- **Lenguaje principal**: PowerShell
+- **Lenguajes**: PowerShell, Shell, Python, JavaScript
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-07-06
 - **Carpeta local**: `totocalcio`
 

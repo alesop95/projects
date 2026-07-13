@@ -3,7 +3,8 @@
 _No description on GitHub._
 
 - **Repository**: [alesop95/blog](https://github.com/alesop95/blog)
-- **Main language**: TypeScript
+- **Languages**: TypeScript, PowerShell, Shell, Python
+- **Start date**: 2026-05
 - **Last updated**: 2026-07-06
 - **Local folder**: `blog-alessio`
 

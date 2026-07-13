@@ -17,7 +17,12 @@ Cosa fa, in ordine:
 2. Per ciascuna cartella rimasta, se e' un repository git con remote "origin" su github.com,
    estrae owner/repo dall'URL (gestisce sia HTTPS sia SSH, incluso l'alias "github-personal").
 3. Per ciascun repository trovato, interroga l'API REST di GitHub (nessuna scrittura, solo
-   lettura di dati gia' pubblici) per metadati e un estratto del README.
+   lettura di dati gia' pubblici) per metadati, la ripartizione dei linguaggi (endpoint
+   /languages, non solo il singolo linguaggio dominante di /repos) e un estratto del README.
+   Legge anche la data del primo commit locale (git log sulla cartella sotto --source) come
+   approssimazione della data di inizio del progetto: richiesta esplicita dell'utente
+   (2026-07-09), a differenza dei progetti aziendali dove questa euristica si e' rivelata
+   inaffidabile (vedi ARCHITECTURE.md) e le date restano corrette a mano.
 4. Genera tre pagine Markdown per progetto (docs/personal/<slug>.md per l'italiano,
    <slug>.en.md per l'inglese, <slug>.es.md per lo spagnolo, secondo la struttura a suffisso di
    mkdocs-static-i18n) e rigenera i tre index.md/index.en.md/index.es.md con la tabella
@@ -44,7 +49,7 @@ import urllib.request
 from pathlib import Path
 
 EXCLUDE_NAMES = {
-    "my-cv", "skills", "template-claude-developing", "lettore-doc", "prova",
+    "my-cv", "skills", "projects", "template-claude-developing", "lettore-doc", "prova",
     "windows-status",  # tooling di sistema, non un "progetto" da vetrina
     "$RECYCLE.BIN", "System Volume Information", ".pnpm-store", ".claude",
 }
@@ -66,8 +71,9 @@ LABELS = {
         "fork_note": "personalizzazione/estensione, non codebase originale",
         "fork_of": "Fork di",
         "repository": "Repository",
-        "language": "Linguaggio principale",
+        "languages": "Linguaggi",
         "topics": "Topics",
+        "start_date": "Data di inizio",
         "updated": "Ultimo aggiornamento",
         "local_folder": "Cartella locale",
         "from_readme": "Dal README",
@@ -79,7 +85,7 @@ LABELS = {
         ),
         "col_project": "Progetto",
         "col_description": "Descrizione",
-        "col_language": "Linguaggio",
+        "col_language": "Linguaggi",
         "col_updated": "Aggiornato",
     },
     "en": {
@@ -87,8 +93,9 @@ LABELS = {
         "fork_note": "customization/extension, not the original codebase",
         "fork_of": "Fork of",
         "repository": "Repository",
-        "language": "Main language",
+        "languages": "Languages",
         "topics": "Topics",
+        "start_date": "Start date",
         "updated": "Last updated",
         "local_folder": "Local folder",
         "from_readme": "From the README",
@@ -100,7 +107,7 @@ LABELS = {
         ),
         "col_project": "Project",
         "col_description": "Description",
-        "col_language": "Language",
+        "col_language": "Languages",
         "col_updated": "Updated",
     },
     "es": {
@@ -108,8 +115,9 @@ LABELS = {
         "fork_note": "personalización/extensión, no el código original",
         "fork_of": "Fork de",
         "repository": "Repositorio",
-        "language": "Lenguaje principal",
+        "languages": "Lenguajes",
         "topics": "Topics",
+        "start_date": "Fecha de inicio",
         "updated": "Última actualización",
         "local_folder": "Carpeta local",
         "from_readme": "Del README",
@@ -121,7 +129,7 @@ LABELS = {
         ),
         "col_project": "Proyecto",
         "col_description": "Descripción",
-        "col_language": "Lenguaje",
+        "col_language": "Lenguajes",
         "col_updated": "Actualizado",
     },
 }
@@ -194,6 +202,41 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
+def format_languages(languages, max_count=4):
+    """languages e' il dict {nome: byte} dell'endpoint /repos/{owner}/{repo}/languages.
+    A differenza del singolo 'language' dominante di /repos, questo riflette davvero tutti i
+    linguaggi usati: restituisce i primi max_count per byte, separati da virgola."""
+    if not languages:
+        return None
+    ranked = sorted(languages.items(), key=lambda kv: kv[1], reverse=True)
+    return ", ".join(name for name, _ in ranked[:max_count])
+
+
+def git_first_commit_date(folder):
+    """Approssima la data di inizio del progetto con la data del primo commit locale. Richiesta
+    esplicita dell'utente per i progetti personali (2026-07-09): a differenza dei progetti
+    aziendali, dove questa euristica si e' rivelata inaffidabile (il tracciamento git spesso
+    inizia molto dopo il lavoro reale, vedi ARCHITECTURE.md), per i repository personali il primo
+    commit e' in genere anche l'inizio effettivo del progetto."""
+    try:
+        roots = subprocess.run(
+            ["git", "-C", str(folder), "rev-list", "--max-parents=0", "HEAD"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if roots.returncode != 0 or not roots.stdout.strip():
+            return None
+        root_hash = roots.stdout.strip().splitlines()[0]
+        date_result = subprocess.run(
+            ["git", "-C", str(folder), "log", "-1", "--format=%ad", "--date=format:%Y-%m", root_hash],
+            capture_output=True, text=True, timeout=10,
+        )
+        if date_result.returncode != 0:
+            return None
+        return date_result.stdout.strip() or None
+    except (subprocess.TimeoutExpired, OSError):
+        return None
+
+
 def load_override(slug, lang):
     """Testo lungo scritto a mano (o da un agente, a partire dal codice reale o in traduzione)
     per questo progetto in questa lingua: vive in data/personal_overrides/<slug>.<lang>.md, fuori
@@ -208,7 +251,7 @@ def load_override(slug, lang):
     return None
 
 
-def build_project_page(lang, folder_name, owner, repo, meta, readme_excerpt, override_text):
+def build_project_page(lang, folder_name, owner, repo, meta, languages_str, start_date, readme_excerpt, override_text):
     labels = LABELS[lang]
     lines = [f"# {meta.get('name', repo)}", ""]
     if meta.get("fork"):
@@ -222,10 +265,12 @@ def build_project_page(lang, folder_name, owner, repo, meta, readme_excerpt, ove
     lines.append(description)
     lines.append("")
     lines.append(f"- **{labels['repository']}**: [{owner}/{repo}]({meta.get('html_url')})")
-    if meta.get("language"):
-        lines.append(f"- **{labels['language']}**: {meta['language']}")
+    if languages_str:
+        lines.append(f"- **{labels['languages']}**: {languages_str}")
     if meta.get("topics"):
         lines.append(f"- **{labels['topics']}**: {', '.join(meta['topics'])}")
+    if start_date:
+        lines.append(f"- **{labels['start_date']}**: {start_date}")
     if meta.get("pushed_at"):
         lines.append(f"- **{labels['updated']}**: {meta['pushed_at'][:10]}")
     lines.append(f"- **{labels['local_folder']}**: `{folder_name}`")
@@ -295,13 +340,16 @@ def main():
         default_branch = meta.get("default_branch", "main")
         readme_raw = github_raw(f"https://raw.githubusercontent.com/{owner}/{repo}/{default_branch}/README.md")
         excerpt = extract_readme_excerpt(readme_raw)
+        languages = github_request(f"{API_ROOT}/repos/{owner}/{repo}/languages", args.token)
+        languages_str = format_languages(languages) or meta.get("language") or "-"
+        start_date = git_first_commit_date(Path(args.source) / folder_name)
 
         slug = slugify(repo)
         for lang in LANGS:
             override_text = load_override(slug, lang)
             page_path = PERSONAL_DIR / f"{slug}{LANG_SUFFIX[lang]}.md"
             page_path.write_text(
-                build_project_page(lang, folder_name, owner, repo, meta, excerpt, override_text),
+                build_project_page(lang, folder_name, owner, repo, meta, languages_str, start_date, excerpt, override_text),
                 encoding="utf-8",
             )
             generated_files.add(page_path.name)
@@ -311,7 +359,7 @@ def main():
             "title": meta.get("name", repo),
             "slug": slug,
             "description": (meta.get("description") or "").replace("|", "/"),
-            "language": meta.get("language") or "-",
+            "language": languages_str,
             "updated": (meta.get("pushed_at") or "")[:10],
         })
 

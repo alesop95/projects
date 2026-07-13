@@ -3,7 +3,8 @@
 A non-complete reverse-engineering of a customized DAC, 4fun
 
 - **Repositorio**: [alesop95/rodrainaudio-reverse-eng](https://github.com/alesop95/rodrainaudio-reverse-eng)
-- **Lenguaje principal**: TeX
+- **Lenguajes**: TeX, PowerShell, Shell, Python
+- **Fecha de inicio**: 2026-06
 - **Última actualización**: 2026-07-06
 - **Carpeta local**: `rodrainaudio-reverse-eng`
 
