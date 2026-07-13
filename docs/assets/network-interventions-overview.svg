@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="ui-sans-serif, 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+  <rect width="720" height="360" fill="#ffffff"/>
+  <text x="24" y="34" font-size="17" font-weight="700" fill="#151d20">Interventi di infrastruttura IT, per area (2024 &#8211; oggi)</text>
+  <text x="24" y="54" font-size="12" fill="#5c6d72">Circa 130 interventi documentati, aggregati per area di competenza. Nessun dettaglio cliente, IP o data specifica.</text>
+
+  <!-- bars: origin x=220, max width=400 for count=34 -->
+  <!-- Telefonia e linee: 34 -->
+  <rect x="220" y="84"  width="400" height="26" fill="#4a3aa7" rx="3"/>
+  <text x="212" y="102" font-size="13" fill="#151d20" text-anchor="end">Telefonia e linee</text>
+  <text x="628" y="102" font-size="13" fill="#151d20">34</text>
+
+  <!-- AI e automazione: 22 -->
+  <rect x="220" y="122" width="259" height="26" fill="#e87ba4" rx="3"/>
+  <text x="212" y="140" font-size="13" fill="#151d20" text-anchor="end">AI e automazione</text>
+  <text x="487" y="140" font-size="13" fill="#151d20">22</text>
+
+  <!-- Sistemi e gestionali: 22 -->
+  <rect x="220" y="160" width="259" height="26" fill="#eb6834" rx="3"/>
+  <text x="212" y="178" font-size="13" fill="#151d20" text-anchor="end">Sistemi e gestionali</text>
+  <text x="487" y="178" font-size="13" fill="#151d20">22</text>
+
+  <!-- Storage e backup: 16 -->
+  <rect x="220" y="198" width="188" height="26" fill="#008300" rx="3"/>
+  <text x="212" y="216" font-size="13" fill="#151d20" text-anchor="end">Storage e backup</text>
+  <text x="416" y="216" font-size="13" fill="#151d20">16</text>
+
+  <!-- Sicurezza e compliance: 12 -->
+  <rect x="220" y="236" width="141" height="26" fill="#e34948" rx="3"/>
+  <text x="212" y="254" font-size="13" fill="#151d20" text-anchor="end">Sicurezza e compliance</text>
+  <text x="369" y="254" font-size="13" fill="#151d20">12</text>
+
+  <!-- Rete e switching: 11 -->
+  <rect x="220" y="274" width="129" height="26" fill="#2a78d6" rx="3"/>
+  <text x="212" y="292" font-size="13" fill="#151d20" text-anchor="end">Rete e switching</text>
+  <text x="357" y="292" font-size="13" fill="#151d20">11</text>
+
+  <!-- Server e virtualizzazione: 9 -->
+  <rect x="220" y="312" width="106" height="26" fill="#eda100" rx="3"/>
+  <text x="212" y="330" font-size="13" fill="#151d20" text-anchor="end">Server e virtualizzazione</text>
+  <text x="334" y="330" font-size="13" fill="#151d20">9</text>
+</svg>
