@@ -3,9 +3,9 @@
 A free-customized interactive holiday tracker
 
 - **Repository**: [alesop95/holiday-template](https://github.com/alesop95/holiday-template)
-- **Languages**: HTML, Python, PowerShell, Shell
+- **Languages**: JavaScript, Python, HTML, PowerShell
 - **Start date**: 2026-06
-- **Last updated**: 2026-07-08
+- **Last updated**: 2026-07-14
 - **Local folder**: `holiday-template`
 
 A reusable template for building shared trip-planning progressive web apps, born from an actual couple's-holiday project (a Cilento 2026 trip lives under `trips/` as the first instance). The design deliberately splits a canonical HTML/JS shell, which handles rendering, state and Firebase wiring and is never edited per trip, from a single `trip.config.js` file per trip that holds the itinerary, restaurant list, map markers and checklist. Every new holiday is created by copying the shell into a new folder under `trips/` and writing only that config file, while all trips share one Firebase project and are namespaced in Firestore by a `TRIP_ID` prefix, so real-time sync of the checklist between two people's devices keeps working without per-trip backend setup.

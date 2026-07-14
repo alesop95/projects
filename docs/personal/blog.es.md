@@ -5,7 +5,7 @@ _Sin descripción en GitHub._
 - **Repositorio**: [alesop95/blog](https://github.com/alesop95/blog)
 - **Lenguajes**: TypeScript, PowerShell, Shell, Python
 - **Fecha de inicio**: 2026-05
-- **Última actualización**: 2026-07-06
+- **Última actualización**: 2026-07-13
 - **Carpeta local**: `blog-alessio`
 
 Este es el blog personal y la plataforma de escritura de Alessio Sopranzi: un sitio estático bilingüe (inglés/italiano) construido a mano sobre Next.js 16, React 19 y Tailwind v4, exportado de forma estática y desplegado en GitHub Pages mediante GitHub Actions. El contenido se basa en archivos en lugar de en un CMS: cada artículo es un archivo MDX bajo content/posts/{en,it}/, con los pares traducidos vinculados mediante un campo compartido articleId en el frontmatter y segmentos de URL específicos por idioma (por ejemplo /en/posts/x frente a /it/articoli/x).

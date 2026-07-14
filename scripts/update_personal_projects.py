@@ -54,6 +54,66 @@ EXCLUDE_NAMES = {
     "$RECYCLE.BIN", "System Volume Information", ".pnpm-store", ".claude",
 }
 
+# Categorizzazione statica dei progetti personali per lo slug (lo stesso usato per i nomi dei
+# file generati in docs/personal/). Assegnata a mano leggendo data/personal_overrides/, non
+# derivata da nessun campo GitHub (topics/language), perche' i topics non sono popolati in modo
+# uniforme su tutti i repository. Ogni slug compare in esattamente una categoria. Un progetto
+# scoperto da discover_projects() ma assente da questa mappa finisce nel bucket "uncategorized"
+# (vedi CATEGORY_ORDER) invece di far fallire lo script: e' un segnale per aggiungere la voce qui
+# alla prossima revisione, non un errore bloccante.
+PROJECT_CATEGORIES = {
+    # Audio ed elaborazione musicale: DSP, acustica, hardware audio, teoria musicale.
+    "diy-2way-monitors-home": "audio_music",
+    "feature-based-characterization-loudspeakers": "audio_music",
+    "gesture-glove-harmonizer": "audio_music",
+    "harmonic-tension-vst3": "audio_music",
+    "harmony-book": "audio_music",
+    "home-recording-training-mixing-setup": "audio_music",
+    "rodrainaudio-reverse-eng": "audio_music",
+    # Agenti AI e strumenti local-first: orchestrazione LLM/agenti, architetture offline-first.
+    "legal-consultant": "ai_agents",
+    "local-audio-transcriptor": "ai_agents",
+    "spanish-learning": "ai_agents",
+    # Sicurezza e infrastruttura self-hosted.
+    "home-lab-cybersec-networking": "security_infra",
+    "pw-manager": "security_infra",
+    "telegram-drive-secure": "security_infra",
+    # Finanza personale e automazione trading.
+    "fiscal-toolkit": "finance_trading",
+    "paypal-transaction-data": "finance_trading",
+    "trader-bot": "finance_trading",
+    # Hardware, embedded e personalizzazione dispositivi.
+    "analog-to-digital-vhs-converter": "hardware_embedded",
+    "gps-time-synchronization-arduino-stm32": "hardware_embedded",
+    "sony-xperia-1-iii-customization": "hardware_embedded",
+    # Giochi, hobby e strumenti da collezione.
+    "crosswords": "games_hobbies",
+    "pok-collecting-update-collection": "games_hobbies",
+    "pok-competitive-teambuilder": "games_hobbies",
+    "totocalcio": "games_hobbies",
+    # App personali e bot: strumenti/webapp per un evento o un uso personale specifico.
+    "app-cross-training": "personal_apps",
+    "blog": "personal_apps",
+    "civitanext": "personal_apps",
+    "discoteca-api": "personal_apps",
+    "holiday-template": "personal_apps",
+    "my-wedding-day": "personal_apps",
+    "telegram-bot": "personal_apps",
+}
+
+# Ordine di visualizzazione dei gruppi nell'index generato. "uncategorized" resta per ultimo e
+# compare solo se qualche slug scoperto non e' presente in PROJECT_CATEGORIES.
+CATEGORY_ORDER = [
+    "audio_music",
+    "ai_agents",
+    "security_infra",
+    "finance_trading",
+    "hardware_embedded",
+    "games_hobbies",
+    "personal_apps",
+    "uncategorized",
+]
+
 API_ROOT = "https://api.github.com"
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
@@ -87,6 +147,14 @@ LABELS = {
         "col_description": "Descrizione",
         "col_language": "Linguaggi",
         "col_updated": "Aggiornato",
+        "cat_audio_music": "Audio ed elaborazione musicale",
+        "cat_ai_agents": "Agenti AI e strumenti local-first",
+        "cat_security_infra": "Sicurezza e infrastruttura self-hosted",
+        "cat_finance_trading": "Finanza personale e automazione trading",
+        "cat_hardware_embedded": "Hardware, embedded e personalizzazione dispositivi",
+        "cat_games_hobbies": "Giochi, hobby e strumenti da collezione",
+        "cat_personal_apps": "App personali e bot",
+        "cat_uncategorized": "Da categorizzare",
     },
     "en": {
         "no_description": "_No description on GitHub._",
@@ -109,6 +177,14 @@ LABELS = {
         "col_description": "Description",
         "col_language": "Languages",
         "col_updated": "Updated",
+        "cat_audio_music": "Audio & music engineering",
+        "cat_ai_agents": "AI agents & local-first tools",
+        "cat_security_infra": "Security & self-hosted infrastructure",
+        "cat_finance_trading": "Personal finance & trading automation",
+        "cat_hardware_embedded": "Hardware, embedded & device customization",
+        "cat_games_hobbies": "Games, hobbies & collecting tools",
+        "cat_personal_apps": "Personal apps & bots",
+        "cat_uncategorized": "Uncategorized",
     },
     "es": {
         "no_description": "_Sin descripción en GitHub._",
@@ -131,6 +207,14 @@ LABELS = {
         "col_description": "Descripción",
         "col_language": "Lenguajes",
         "col_updated": "Actualizado",
+        "cat_audio_music": "Ingeniería de audio y música",
+        "cat_ai_agents": "Agentes de IA y herramientas local-first",
+        "cat_security_infra": "Seguridad e infraestructura autoalojada",
+        "cat_finance_trading": "Finanzas personales y automatización de trading",
+        "cat_hardware_embedded": "Hardware, embebidos y personalización de dispositivos",
+        "cat_games_hobbies": "Juegos, aficiones y herramientas de colección",
+        "cat_personal_apps": "Apps personales y bots",
+        "cat_uncategorized": "Sin categorizar",
     },
 }
 
@@ -355,12 +439,21 @@ def main():
             generated_files.add(page_path.name)
         print(f"  OK    {folder_name} -> {slug}.md (it/en/es)")
 
+        category = PROJECT_CATEGORIES.get(slug)
+        if category is None:
+            category = "uncategorized"
+            print(
+                f"  WARN  {slug} non e' presente in PROJECT_CATEGORIES: assegnato a "
+                f"'uncategorized', aggiungere la voce nello script.",
+                file=sys.stderr,
+            )
         index_rows.append({
             "title": meta.get("name", repo),
             "slug": slug,
             "description": (meta.get("description") or "").replace("|", "/"),
             "language": languages_str,
             "updated": (meta.get("pushed_at") or "")[:10],
+            "category": category,
         })
 
     # Rimuove le pagine di progetti che non esistono piu' tra quelli scoperti ora (es. rinominati
@@ -374,7 +467,16 @@ def main():
             existing.unlink()
             print(f"  RM    {existing.relative_to(REPO_ROOT)} (progetto non piu' trovato)")
 
-    index_rows.sort(key=lambda row: row["updated"], reverse=True)
+    # Raggruppa per categoria secondo CATEGORY_ORDER; dentro ogni gruppo l'ordinamento resta per
+    # data di aggiornamento decrescente, come nella tabella piatta precedente. Un gruppo senza
+    # righe (es. nessun progetto scoperto in questa corsa ricade in "uncategorized") non produce
+    # un'intestazione vuota nell'index.
+    rows_by_category = {key: [] for key in CATEGORY_ORDER}
+    for row in index_rows:
+        rows_by_category.setdefault(row["category"], []).append(row)
+    for rows in rows_by_category.values():
+        rows.sort(key=lambda row: row["updated"], reverse=True)
+
     for lang in LANGS:
         labels = LABELS[lang]
         index_lines = [
@@ -382,15 +484,25 @@ def main():
             "",
             labels["index_intro"],
             "",
-            f"| {labels['col_project']} | {labels['col_description']} | {labels['col_language']} | {labels['col_updated']} |",
-            "|---|---|---|---|",
         ]
-        for row in index_rows:
+        for category_key in CATEGORY_ORDER:
+            rows = rows_by_category.get(category_key) or []
+            if not rows:
+                continue
+            category_label = labels.get(f"cat_{category_key}", category_key)
+            index_lines.append(f"## {category_label}")
+            index_lines.append("")
             index_lines.append(
-                f"| [{row['title']}]({row['slug']}.md) | {row['description']} | {row['language']} | {row['updated']} |"
+                f"| {labels['col_project']} | {labels['col_description']} | {labels['col_language']} | {labels['col_updated']} |"
             )
+            index_lines.append("|---|---|---|---|")
+            for row in rows:
+                index_lines.append(
+                    f"| [{row['title']}]({row['slug']}.md) | {row['description']} | {row['language']} | {row['updated']} |"
+                )
+            index_lines.append("")
         index_path = PERSONAL_DIR / f"index{LANG_SUFFIX[lang]}.md"
-        index_path.write_text("\n".join(index_lines) + "\n", encoding="utf-8")
+        index_path.write_text("\n".join(index_lines).rstrip() + "\n", encoding="utf-8")
     print(f"[update_personal_projects] Aggiornati gli index (it/en/es) con {len(index_rows)} progetti.")
     return 0
 
