@@ -5,7 +5,7 @@ _No description on GitHub._
 - **Repository**: [alesop95/discoteca-api](https://github.com/alesop95/discoteca-api)
 - **Languages**: PowerShell, Shell, Python, TypeScript
 - **Start date**: 2025-05
-- **Last updated**: 2026-07-06
+- **Last updated**: 2026-07-14
 - **Local folder**: `discoteca-api`
 
 A small TypeScript backend, built with Express 5 and Prisma over SQLite, for a nightclub-style guest list: a single POST endpoint accepts a name and email, creates or reuses a User record keyed by email, generates a QR code image encoding the user's id, name, and email, and emails it to the guest via Nodemailer so it can be scanned at the door. Input is validated with Zod. The data model is intentionally minimal, a single User table with no roles, events, or capacity tracking, and there is a companion Vite and React frontend consisting of little more than a registration form component that calls the API.

@@ -5,7 +5,7 @@ _No description on GitHub._
 - **Repository**: [alesop95/app-cross-training](https://github.com/alesop95/app-cross-training)
 - **Languages**: -
 - **Start date**: 2026-06
-- **Last updated**: 2026-06-23
+- **Last updated**: 2026-07-14
 - **Local folder**: `app-cross-training`
 
 X CROSS Training is a Flutter mobile app for programming cross-training and functional-training workouts, built from a set of specs and datasets extracted from an existing PowerPoint deck and Excel workbook. The repository started as a specification-only package (documents, data model, JSON datasets) meant for handoff to a developer, and has since grown to include a real Flutter scaffold: design system, reusable components, and the app's main screens.

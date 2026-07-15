@@ -5,7 +5,7 @@ _No description on GitHub._
 - **Repository**: [alesop95/home-recording-training-mixing-setup](https://github.com/alesop95/home-recording-training-mixing-setup)
 - **Languages**: PowerShell, Shell, Python, JavaScript
 - **Start date**: 2026-06
-- **Last updated**: 2026-07-06
+- **Last updated**: 2026-07-14
 - **Local folder**: `home-recording-training-mixing-setup`
 
 This repository is a placeholder for notes on a home audio recording, training and mixing setup, and as of now holds essentially no content: the working tree contains only the standard project scaffolding and a single empty text file under `_notes/` (its own filename hints at "analog electronics reasoning for music" but the file has no content yet). The project's own instructions confirm this directly, describing it as configuration notes for a home-recording/training/mixing setup that "has not yet been started as code," with handwritten material meant to accumulate locally and stay untracked by git until the project matures.

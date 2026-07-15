@@ -5,7 +5,7 @@ A personal repo to develop new crossword games (italian language)
 - **Repository**: [alesop95/crosswords](https://github.com/alesop95/crosswords)
 - **Languages**: TypeScript, PowerShell, Shell, Python
 - **Start date**: 2026-07
-- **Last updated**: 2026-07-06
+- **Last updated**: 2026-07-14
 - **Local folder**: `crosswords`
 
 A local-first, no-backend web app for building traditional Italian-style crossword grids (parole crociate), written in TypeScript with Vite. Beyond the expected grid editor with free black squares and optional symmetry, and a clue editor with ipuz export and print support, the interesting engineering is in the automatic fill: the codebase implements a constraint-satisfaction solver with arc-consistency propagation, run off the main thread in a web worker, rather than a naive brute-force word matcher, so the UI stays responsive while filling large grids. The candidate dictionary is generated from the Morph-it! Italian lexicon and annotated with frequency scores, letting the solver prefer common words during autofill.

@@ -5,7 +5,7 @@ _Sin descripción en GitHub._
 - **Repositorio**: [alesop95/discoteca-api](https://github.com/alesop95/discoteca-api)
 - **Lenguajes**: PowerShell, Shell, Python, TypeScript
 - **Fecha de inicio**: 2025-05
-- **Última actualización**: 2026-07-06
+- **Última actualización**: 2026-07-14
 - **Carpeta local**: `discoteca-api`
 
 Un pequeño backend en TypeScript, construido con Express 5 y Prisma sobre SQLite, para una lista de invitados al estilo discoteca: un único endpoint POST acepta nombre y email, crea o reutiliza un registro User indexado por email, genera una imagen con código QR que codifica el id, nombre y email del usuario, y la envía por correo al invitado mediante Nodemailer, de modo que pueda escanearse en la puerta. La entrada se valida con Zod. El modelo de datos es deliberadamente mínimo, una única tabla User sin roles, eventos ni control de aforo, y existe un frontend complementario en Vite y React que consiste en poco más que un componente de formulario de registro que llama a la API.

@@ -5,7 +5,7 @@ Bachelor degree project
 - **Repository**: [alesop95/gps-time-synchronization-arduino-stm32](https://github.com/alesop95/gps-time-synchronization-arduino-stm32)
 - **Linguaggi**: C, C++, Python
 - **Data di inizio**: 2026-01
-- **Ultimo aggiornamento**: 2026-06-23
+- **Ultimo aggiornamento**: 2026-07-14
 - **Cartella locale**: `gps-time-synchronization-arduino-stm32`
 
 Questo repository contiene il lavoro sperimentale per una tesi di laurea triennale in Ingegneria Elettronica/Informatica che misura e confronta la deriva dell'orologio (clock drift) su due piattaforme embedded rispetto al tempo GPS come riferimento assoluto. Un Arduino Uno, basato sul contatore software millis(), e uno STM32 Nucleo (famiglia STM32L1), che pilota il proprio RTC hardware con un cristallo esterno da 32.768 kHz, ricevono entrambi frasi NMEA dallo stesso modulo GPS e registrano lo scarto tra il proprio orologio e il tempo GPS durante acquisizioni di più ore.

@@ -5,9 +5,9 @@ _Sin descripción en GitHub._
 - **Repositorio**: [alesop95/fiscal-toolkit](https://github.com/alesop95/fiscal-toolkit)
 - **Lenguajes**: -
 - **Fecha de inicio**: 2026-07
-- **Última actualización**: 2026-07-10
+- **Última actualización**: 2026-07-14
 - **Carpeta local**: `fiscal-toolkit`
 
 ## Del README
 
-Strumento personale per l'analisi degli aspetti fiscali della retribuzione in Italia, nel contesto della ricerca di lavoro: stima del netto da una RAL, confronto lavoro dipendente vs partita IVA (forfettario/ordinario), lettura del cuneo fiscale e delle detrazioni IRPEF. Non e' un progetto commerciale e non costituisce consulenza fiscale: i calcoli vanno sempre verificati con un commercialista prima di qualunque decisione reale. Scaffolding iniziale, nessuna implementazione ancora. Nato da una sessione di ricerca il 2026-07-10 nel repository `my-cv`, spostato qui come progetto a se stante…
+fiscal-toolkit e' uno strumento personale, non commerciale, pensato per orientarsi tra gli aspetti fiscali della retribuzione in Italia durante una ricerca di lavoro: stimare il netto a partire da una RAL, confrontare il lavoro dipendente con la partita IVA (regime forfettario o ordinario), e capire il peso del cuneo fiscale e delle detrazioni IRPEF su uno stipendio. E' nato il 10 luglio 2026 da una sessione di ricerca condotta nel repository del CV (`my-cv`), ed e' stato spostato qui come progetto a se stante, seguendo lo stesso pattern gia' adottato per altri repository personali collegati…

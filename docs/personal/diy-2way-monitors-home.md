@@ -5,7 +5,7 @@ _Nessuna descrizione su GitHub._
 - **Repository**: [alesop95/diy-2way-monitors-home](https://github.com/alesop95/diy-2way-monitors-home)
 - **Linguaggi**: PowerShell, Shell, Python, JavaScript
 - **Data di inizio**: 2026-06
-- **Ultimo aggiornamento**: 2026-07-06
+- **Ultimo aggiornamento**: 2026-07-14
 - **Cartella locale**: `diy-2way-monitors-home`
 
 Questo repository è uno spazio di pianificazione per la realizzazione DIY di una coppia di monitor da studio a due vie e dei relativi crossover attivi per uso domestico, non ancora un progetto implementato. Allo stato attuale, la cartella locale e il repository tracciato contengono solo lo scaffolding del progetto, appunti scritti, link di riferimento e un documento di lavoro sull'elettroacustica: non c'è alcun design del crossover, nessun modello di cassa acustica e nessun codice ancora committato, quindi è meglio leggerlo come uno sforzo di ricerca personale in fase iniziale piuttosto che come una realizzazione finita.

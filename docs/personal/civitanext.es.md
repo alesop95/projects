@@ -5,7 +5,7 @@ _Sin descripción en GitHub._
 - **Repositorio**: [alesop95/civitanext](https://github.com/alesop95/civitanext)
 - **Lenguajes**: JavaScript, HTML, PowerShell, Shell
 - **Fecha de inicio**: 2026-07
-- **Última actualización**: 2026-07-14
+- **Última actualización**: 2026-07-15
 - **Carpeta local**: `civitanext`
 
 CivitaNext es la plataforma de participación cívica pensada para los jóvenes residentes de Civitanova Marche: un calendario de eventos, cuestionarios cívicos, un foro de discusión, propuestas con votación, un perfil de miembro con carné digital, un panel de administración y secciones de comunidad y ciudad como mentoría, un mapa de espacios cívicos y un archivo documental. El repositorio ha atravesado dos fases distintas: primero una entrega de diseño de alta fidelidad (el prototipo en `design_handoff_civitanext/`), luego, a partir de la Fase 0 de desarrollo, la reconstrucción real en Next.js en la raíz del propio repositorio.
