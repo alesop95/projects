@@ -1,7 +1,6 @@
 # Corsi ed eventi
 
-Corsi di formazione tecnica e percorsi personali seguiti al di fuori del percorso universitario
-e dell'attività lavorativa in senso stretto.
+Corsi di formazione tecnica e percorsi personali seguiti al di fuori del percorso universitario e dell'attività lavorativa in senso stretto.
 
 | Corso | Periodo | Ambito |
 |---|---|---|

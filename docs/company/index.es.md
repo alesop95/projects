@@ -1,14 +1,8 @@
 # Company projects
 
-Proyectos profesionales realizados para el empleador actual. Cada entrada se relata en forma
-**completamente anonimizada**: ningún nombre de empresa, cliente, proveedor o sistema interno,
-solo el contexto técnico y el rol desempeñado.
+Proyectos profesionales realizados para el empleador actual. Cada entrada se relata en forma **completamente anonimizada**: ningún nombre de empresa, cliente, proveedor o sistema interno, solo el contexto técnico y el rol desempeñado.
 
-Estas páginas no se generan automáticamente: `scripts/check_company_changes.py` se limita a
-señalar qué carpetas de proyecto han cambiado en `D:\` (el mismo principio se aplica a los
-proyectos alojados en máquinas virtuales separadas), sin leer ni publicar su contenido. El texto
-de cada entrada se escribe o actualiza a mano: ver `_template.md` en esta misma carpeta para el
-esquema a seguir.
+Estas páginas no se generan automáticamente: `scripts/check_company_changes.py` se limita a señalar qué carpetas de proyecto han cambiado en `D:\` (el mismo principio se aplica a los proyectos alojados en máquinas virtuales separadas), sin leer ni publicar su contenido. El texto de cada entrada se escribe o actualiza a mano: ver `_template.md` en esta misma carpeta para el esquema a seguir.
 
 | Proyecto | Periodo | Rol |
 |---|---|---|

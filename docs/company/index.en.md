@@ -1,13 +1,8 @@
 # Company projects
 
-Professional projects carried out for the current employer. Each entry is told in a
-**fully anonymized** form: no company, client, supplier, or internal system name,
-only the technical context and the role performed.
+Professional projects carried out for the current employer. Each entry is told in a **fully anonymized** form: no company, client, supplier, or internal system name, only the technical context and the role performed.
 
-These pages are not generated automatically: `scripts/check_company_changes.py` only flags
-which project folders have changed under `D:\` (the same principle applies to projects hosted on
-separate virtual machines), without reading or publishing their content. The text of each entry
-is written or updated by hand: see `_template.md` in this same folder for the schema to follow.
+These pages are not generated automatically: `scripts/check_company_changes.py` only flags which project folders have changed under `D:\` (the same principle applies to projects hosted on separate virtual machines), without reading or publishing their content. The text of each entry is written or updated by hand: see `_template.md` in this same folder for the schema to follow.
 
 | Project | Period | Role |
 |---|---|---|

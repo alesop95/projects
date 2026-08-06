@@ -23,8 +23,7 @@ questa riga di istruzioni. Regole di anonimizzazione, da rispettare sempre:
 
 ## Contesto
 
-Descrizione del problema/esigenza di business che ha originato il progetto, in termini generici
-sufficienti a capire lo scenario senza identificare l'azienda.
+Descrizione del problema/esigenza di business che ha originato il progetto, in termini generici sufficienti a capire lo scenario senza identificare l'azienda.
 
 ## Cosa e' stato fatto
 
@@ -32,5 +31,4 @@ Descrizione tecnica del lavoro svolto: architettura, decisioni prese, difficolta
 
 ## Risultato
 
-Impatto misurabile o qualitativo del progetto, in termini che non rivelino dati aziendali
-riservati (es. percentuali di miglioramento invece di cifre assolute di fatturato).
+Impatto misurabile o qualitativo del progetto, in termini che non rivelino dati aziendali riservati (es. percentuali di miglioramento invece di cifre assolute di fatturato).

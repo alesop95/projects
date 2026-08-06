@@ -1,9 +1,6 @@
 # Progetti accademici
 
-Progetti universitari e accademici svolti durante la Laurea triennale in Ingegneria elettronica,
-la Laurea magistrale in Ingegneria delle telecomunicazioni e il periodo immediatamente successivo.
-Tre di queste voci hanno anche un repository pubblico e vivono già nella pagina
-[Progetti personali](../personal/index.md); qui sono solo linkate, non duplicate.
+Progetti universitari e accademici svolti durante la Laurea triennale in Ingegneria elettronica, la Laurea magistrale in Ingegneria delle telecomunicazioni e il periodo immediatamente successivo. Tre di queste voci hanno anche un repository pubblico e vivono già nella pagina [Progetti personali](../personal/index.md); qui sono solo linkate, non duplicate.
 
 | Progetto | Periodo | Ruolo |
 |---|---|---|

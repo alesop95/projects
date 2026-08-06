@@ -1,14 +1,8 @@
 # Company projects
 
-Progetti professionali svolti per il datore di lavoro attuale. Ogni voce è raccontata in forma
-**completamente anonimizzata**: nessun nome di azienda, cliente, fornitore o sistema interno,
-solo il contesto tecnico e il ruolo svolto.
+Progetti professionali svolti per il datore di lavoro attuale. Ogni voce è raccontata in forma **completamente anonimizzata**: nessun nome di azienda, cliente, fornitore o sistema interno, solo il contesto tecnico e il ruolo svolto.
 
-Queste pagine non sono generate automaticamente: `scripts/check_company_changes.py` si limita a
-segnalare quali cartelle progetto sono cambiate da `D:\`, senza leggerne né pubblicarne il
-contenuto (lo stesso principio vale per i progetti ospitati su macchine virtuali separate). Il
-testo di ciascuna voce va scritto o aggiornato a mano: vedi `_template.md` in questa stessa
-cartella per lo schema da seguire.
+Queste pagine non sono generate automaticamente: `scripts/check_company_changes.py` si limita a segnalare quali cartelle progetto sono cambiate da `D:\`, senza leggerne né pubblicarne il contenuto (lo stesso principio vale per i progetti ospitati su macchine virtuali separate). Il testo di ciascuna voce va scritto o aggiornato a mano: vedi `_template.md` in questa stessa cartella per lo schema da seguire.
 
 | Progetto | Periodo | Ruolo |
 |---|---|---|
