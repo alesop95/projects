@@ -14,4 +14,4 @@ Due spettacoli, entrambi gialli comici: "La morte viene a cena" e "Callaghan". [
 
 **Periodo**: 12/2025
 
-Workshop di coppia basato sul metodo EFT (Emotionally Focused Therapy) di [Sue Johnson](https://drive.google.com/file/d/1eS5HOIdAQOYIgZ6Zu7NUIhUQN49fZtlT/view?usp=sharing). [Certificato](https://drive.google.com/file/d/19jc-MpTL5mdlmXTW2RFm_myuLzoeXkg7/view?usp=sharing).
+Workshop di coppia basato sul metodo EFT (Emotionally Focused Therapy) elaborato da Sue Johnson, di cui il riferimento è *Hold Me Tight: Seven Conversations for a Lifetime of Love* (2011). Il workshop non rilascia un attestato.
