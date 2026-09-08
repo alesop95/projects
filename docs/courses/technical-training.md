@@ -9,6 +9,6 @@ Corso di formazione con [Openforce Pedaso](https://www.openforce.it/).
 ## Altri seminari audio
 
 - [Klippel](https://www.klippel.de/fileadmin/klippel/Files/News/VIRTUAL%20LECTURE%202022.pdf)
-- [Masterclass](https://drive.google.com/file/d/1W6TS1cJAvJIVbbDPXks47_ELpmxMrD7K/view)
-- [K-ACADEMY](https://drive.google.com/file/d/1mBimN4uUJW4we3oNSqjRNWTAyJeGdqY9/view)
+- [Masterclass](https://drive.proton.me/urls/JSZYEDPC3G#K4VKQjfLAbIa)
+- [K-ACADEMY](https://drive.proton.me/urls/G8Q023T4DR#6EtHCGFZmZmC)
 - K-ARRAY/B&C Speakers

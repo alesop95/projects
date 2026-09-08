@@ -4,7 +4,7 @@
 
 **Periodo**: 09/2025 - 07/2026
 
-Corso presso [contemporanea2-0.it](https://www.contemporanea2-0.it/landing-dizione/). [Certificato](https://drive.google.com/file/d/1FzGM9FFX__uIk8BlBm7w7u2bP4W2Jv8Z/view?usp=sharing) e [recensione personale](https://drive.google.com/file/d/1SY_hhVEVb_BRHdIC3KPAX9xB0RloQlUj/view?usp=sharing) scritta come esercizio pratico del corso.
+Corso presso [contemporanea2-0.it](https://www.contemporanea2-0.it/landing-dizione/). [Certificato](https://drive.proton.me/urls/2AEP8NSDQM#SsbKG_-V4zjr) e [video finale del corso](https://drive.proton.me/urls/6KWFM3136M#2bA2HKgmj8dX) scritta come esercizio pratico del corso.
 
 ## Spettacolo teatrale
 
