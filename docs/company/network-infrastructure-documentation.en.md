@@ -16,6 +16,8 @@ The history of interventions on the corporate network (topology, firewall, virtu
 
 A network documentation and design repository with a two-layer structure: a narrative layer for the operational log and extended context, and a versioned technical layer with structured records, a chronological timeline of interventions, and documentation of the firewall and other components, with an approach oriented toward ISO/IEC 27001 compliance for the network security part. A PowerShell script queries the REST API of the Proxmox VE hypervisor and automatically produces a complete snapshot of the current state of the virtualized infrastructure, so the technical document stays aligned with reality instead of drifting out of date over time. The infrastructure's real IP addresses are kept out of the versioned repository.
 
+The project grew from documentation alone into a structural network intervention: segmentation into VLANs dedicated by device class, an audit of the physical and electrical layer (power, continuity, cabling), a security perimeter hardening campaign, migration of corporate telephony to a cloud system, and an interactive network map generated from the structured source of truth instead of maintained by hand.
+
 ![Network interventions by area of competence](../assets/network-interventions-overview.en.svg)
 
 *Aggregate count by area of competence, with no detail on client, IP address, or the specific date of individual interventions.*

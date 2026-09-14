@@ -16,6 +16,8 @@ El historial de intervenciones sobre la red corporativa (topología, firewall, v
 
 Repositorio de documentación y diseño de la red con doble capa: una narrativa para el diario operativo y el contexto extendido, y una técnica versionada con fichas estructuradas, la cronología de las intervenciones y la documentación del firewall y demás componentes, con un enfoque orientado al cumplimiento de ISO/IEC 27001 para la parte de seguridad de red. Un script de PowerShell consulta la API REST del hipervisor Proxmox VE y produce automáticamente un snapshot completo del estado actual de la infraestructura virtualizada, de modo que el documento técnico se mantenga siempre alineado con la realidad en lugar de desactualizarse con el tiempo. Las direcciones IP reales de la infraestructura quedan fuera del repositorio versionado.
 
+El proyecto pasó de la sola documentación a una intervención estructural sobre la red: segmentación en VLAN dedicadas por clase de dispositivo, una auditoría de la capa física y eléctrica (alimentación, continuidad, cableado), una campaña de hardening del perímetro de seguridad, la migración de la telefonía corporativa a un sistema en la nube, y un mapa de red interactivo generado a partir de la fuente de verdad estructurada en lugar de mantenido a mano.
+
 ![Intervenciones de red por área de competencia](../assets/network-interventions-overview.es.svg)
 
 *Recuento agregado por área de competencia, sin ningún detalle sobre cliente, IP o fecha específica de las intervenciones individuales.*
