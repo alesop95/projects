@@ -2,7 +2,7 @@
 
 **Settore**: azienda di servizi linguistici e traduzione professionale
 
-**Periodo**: 06/2026 - in corso
+**Periodo**: 10/2024 - in corso
 
 **Ruolo**: IT Manager, sistemista di rete
 

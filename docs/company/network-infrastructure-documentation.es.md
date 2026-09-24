@@ -2,7 +2,7 @@
 
 **Sector**: empresa de servicios lingüísticos y traducción profesional
 
-**Periodo**: 06/2026 - en curso
+**Periodo**: 10/2024 - en curso
 
 **Rol**: IT Manager, administrador de red
 

@@ -2,7 +2,7 @@
 
 **Sector**: language services and professional translation company
 
-**Period**: 06/2026 - ongoing
+**Period**: 10/2024 - ongoing
 
 **Role**: IT Manager, network administrator
 

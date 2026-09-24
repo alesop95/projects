@@ -10,11 +10,11 @@ Estas páginas no se generan automáticamente: `scripts/check_company_changes.py
 | [Plataforma interna de inteligencia artificial generativa](internal-generative-ai-platform.md) (proyecto insignia, en evolución continua) | por confirmar - en curso | IT Manager, desarrollador full-stack, R&D |
 | [Portal de gestión de activos de TI y cumplimiento ISO/IEC 27001](it-asset-management-portal.md) | 05/2025 - en curso | IT Manager, product owner y desarrollador full-stack |
 | [Backend de integración para un servicio de traducción](translation-integration-backend.md) | 03/2025 - en curso | IT Manager, desarrollador backend |
-| [Diseño y documentación de la red corporativa](network-infrastructure-documentation.md) | 06/2026 - en curso | IT Manager, administrador de red |
+| [Diseño y documentación de la red corporativa](network-infrastructure-documentation.md) | 10/2024 - en curso | IT Manager, administrador de red |
 | [Aplicación de integración con el ERP y parsing de datos de facturación](invoicing-data-integration-app.md) | por confirmar | IT Manager, desarrollador full-stack |
 | [Migración y gestión del ciclo de vida de licencias de software](software-license-lifecycle-management.md) | por confirmar | IT Manager, administrador de sistemas |
 | [Migración del software de control de presencia](time-attendance-software-management.md) | por confirmar | IT Manager, administrador de sistemas |
-| [Migración y containerización del sitio web corporativo](company-website-migration-containerization.md) | por confirmar | IT Manager, administrador de sistemas |
+| [Migración, containerización y evolución del sitio web corporativo](company-website-migration-containerization.md) | por confirmar - en curso | IT Manager, administrador de sistemas |
 | [Migración de un software de gestión legacy a un sistema operativo con soporte](legacy-management-software-migration.md) | por confirmar | IT Manager, administrador de sistemas |
 | [Plataforma de gestión de proyectos de TI con diagramas de Gantt](it-project-management-platform.md) | por confirmar | IT Manager |
 | [Toolkit de monitorización de buzones de correo corporativos](mailbox-monitoring-toolkit.md) | 06/2026 - en curso | IT Manager, administrador de sistemas |
