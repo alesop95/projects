@@ -2,7 +2,7 @@
 
 **Settore**: azienda di servizi linguistici e traduzione professionale
 
-**Periodo**: da confermare - in corso
+**Periodo**: 07/2026 - in corso
 
 **Ruolo**: IT Manager, architettura degli ambienti, sistemista
 
@@ -16,7 +16,7 @@ Il sito aziendale, basato su WordPress, era ospitato da un provider esterno, e u
 
 La prima fase è la migrazione: il sito WordPress è stato portato 1:1 dall'hosting esterno a una macchina virtuale sulla rete interna, containerizzato (web server, database e reverse proxy in container separati) e servito in LAN con redirect DNS. Questa copia resta come ambiente di riferimento, in sola lettura, per la migrazione dei contenuti.
 
-La seconda fase, in corso, è la ricostruzione. Il nuovo sito si sviluppa su Next.js con Payload come CMS e PostgreSQL come database, con uno schema dei contenuti progettato da zero invece di ereditare la struttura di WordPress. Gli ambienti sono separati per funzione: sviluppo e staging su una macchina virtuale interna raggiungibile solo dalla LAN, produzione su un server cloud dedicato e già messo in sicurezza (accesso SSH solo a chiave, firewall ristretto ai servizi pubblici), che non compila niente ma esegue l'immagine container prodotta dalla pipeline di build. Sono pianificati backup cifrati con copia off-site e una prova di ripristino prima della messa in produzione.
+La seconda fase, in corso, è la ricostruzione. Il nuovo sito si sviluppa su Next.js con Payload come CMS e PostgreSQL come database, con uno schema dei contenuti progettato da zero invece di ereditare la struttura di WordPress. Gli ambienti sono separati per funzione: sviluppo e staging su una macchina virtuale interna raggiungibile solo dalla LAN, produzione su un server cloud dedicato e già messo in sicurezza (accesso SSH solo a chiave, firewall ristretto ai servizi pubblici), che non compila niente ma esegue l'immagine container prodotta dalla pipeline di build. Il codice è versionato nell'organizzazione GitHub aziendale, con un ramo di staging e l'integrazione del lavoro tramite pull request. Il CMS è già trilingue (italiano, inglese, tedesco), con utenti a ruoli, tassonomie, blocchi di contenuto e impostazioni globali; sul frontend sono in lavorazione le pagine una alla volta a partire dai design token condivisi, con la decisione esplicita che il sito debba funzionare bene da telefono, e una vetrina in LAN permette di rivedere lo stato del sito prima del rilascio. Sono pianificati backup cifrati con copia off-site e una prova di ripristino prima della messa in produzione.
 
 ## Risultato
 

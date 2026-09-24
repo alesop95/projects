@@ -14,7 +14,7 @@ Queste pagine non sono generate automaticamente: `scripts/check_company_changes.
 | [Applicazione di integrazione con il gestionale e parsing dati di fatturazione](invoicing-data-integration-app.md) | da confermare | IT Manager, sviluppatore full-stack |
 | [Migrazione e gestione del ciclo di vita di licenze software](software-license-lifecycle-management.md) | da confermare | IT Manager, sistemista |
 | [Migrazione del software di rilevazione presenze](time-attendance-software-management.md) | da confermare | IT Manager, sistemista |
-| [Migrazione, containerizzazione ed evoluzione del sito aziendale](company-website-migration-containerization.md) | da confermare - in corso | IT Manager, sistemista |
+| [Migrazione, containerizzazione ed evoluzione del sito aziendale](company-website-migration-containerization.md) | 07/2026 - in corso | IT Manager, sistemista |
 | [Migrazione di un gestionale legacy a un sistema operativo supportato](legacy-management-software-migration.md) | da confermare | IT Manager, sistemista |
 | [Piattaforma di project management IT con diagrammi di Gantt](it-project-management-platform.md) | da confermare | IT Manager |
 | [Toolkit di monitoraggio caselle di posta aziendali](mailbox-monitoring-toolkit.md) | 06/2026 - in corso | IT Manager, sistemista |

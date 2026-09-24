@@ -14,7 +14,7 @@ These pages are not generated automatically: `scripts/check_company_changes.py` 
 | [ERP integration application and invoicing data parsing](invoicing-data-integration-app.md) | to be confirmed | IT Manager, full-stack developer |
 | [Software license migration and lifecycle management](software-license-lifecycle-management.md) | to be confirmed | IT Manager, system administrator |
 | [Time and attendance software migration](time-attendance-software-management.md) | to be confirmed | IT Manager, system administrator |
-| [Company website migration, containerization and evolution](company-website-migration-containerization.md) | to be confirmed - ongoing | IT Manager, system administrator |
+| [Company website migration, containerization and evolution](company-website-migration-containerization.md) | 07/2026 - ongoing | IT Manager, system administrator |
 | [Migration of a legacy management software to a supported operating system](legacy-management-software-migration.md) | to be confirmed | IT Manager, system administrator |
 | [IT project management platform with Gantt charts](it-project-management-platform.md) | to be confirmed | IT Manager |
 | [Corporate mailbox monitoring toolkit](mailbox-monitoring-toolkit.md) | 06/2026 - ongoing | IT Manager, system administrator |

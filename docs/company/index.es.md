@@ -14,7 +14,7 @@ Estas páginas no se generan automáticamente: `scripts/check_company_changes.py
 | [Aplicación de integración con el ERP y parsing de datos de facturación](invoicing-data-integration-app.md) | por confirmar | IT Manager, desarrollador full-stack |
 | [Migración y gestión del ciclo de vida de licencias de software](software-license-lifecycle-management.md) | por confirmar | IT Manager, administrador de sistemas |
 | [Migración del software de control de presencia](time-attendance-software-management.md) | por confirmar | IT Manager, administrador de sistemas |
-| [Migración, containerización y evolución del sitio web corporativo](company-website-migration-containerization.md) | por confirmar - en curso | IT Manager, administrador de sistemas |
+| [Migración, containerización y evolución del sitio web corporativo](company-website-migration-containerization.md) | 07/2026 - en curso | IT Manager, administrador de sistemas |
 | [Migración de un software de gestión legacy a un sistema operativo con soporte](legacy-management-software-migration.md) | por confirmar | IT Manager, administrador de sistemas |
 | [Plataforma de gestión de proyectos de TI con diagramas de Gantt](it-project-management-platform.md) | por confirmar | IT Manager |
 | [Toolkit de monitorización de buzones de correo corporativos](mailbox-monitoring-toolkit.md) | 06/2026 - en curso | IT Manager, administrador de sistemas |
