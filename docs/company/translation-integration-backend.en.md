@@ -2,20 +2,22 @@
 
 **Sector**: language services and professional translation company
 
-**Period**: 03/2025 - ongoing
+**Period**: 11/2025 - ongoing
 
-**Role**: IT Manager, backend developer
+**Role**: IT Manager, security review and fixes to the credit calculation
 
-**Technologies**: Python, FastAPI, integration with a third-party translation project management system, an AI-based machine translation engine, a public machine translation service as fallback
+**Technologies**: Python, FastAPI, SQLite for the project context, parsing of Excel reports and XLIFF bilingual files, integration with a third-party translation project management system, an artificial intelligence based machine translation engine and a public machine translation service as fallback
 
 ## Context
 
-The translation service offered to clients relies on a third-party project management system for work assignment and on a machine translation engine for the first draft. The two systems do not communicate natively in the flow required by the company: an integration layer was needed to orchestrate the calls between them, with continuity coverage for when the primary engine is unavailable or does not cover a language pair.
+The client-facing translation service relies on a third-party project management system to assign work and on a machine translation engine for the first draft. The two systems do not talk to each other natively in the flow the company needs: an integration layer was required to connect the client portal to both, calculate quotes and cover the cases where the main engine does not return a translation.
 
 ## What was built
 
-REST backend in Python/FastAPI that bridges the project management system and the translation engine, with a public machine translation service used as fallback when the primary engine does not respond or does not cover the requested language. The flow is organized into three phases (project retrieval, submission to the translation engine, collection and normalization of the result), with error handling and retries at the integration layer. Technical documentation structured to allow work to resume across non-consecutive sessions.
+A Python/FastAPI REST backend that connects the client portal to the project management system and the translation engine. The flow is split into three independent calls. The first creates an analysis-only project, reads its report and calculates the quote in credits; the second creates the actual translation project; the third starts, in the background, the export of the bilingual files, has the AI engine translate only the missing segments, falls back to the public service for those the engine does not return, re-imports the files and closes the tasks, leaving the review to the project manager when the client has chosen additional services. Since the three calls do not share a session, the backend keeps a project context with the parameters the third phase needs.
+
+The backend is team work, mostly developed by colleagues. I created the repository, carried out its security review and cleanup, and fixed the preprocessing credit calculation, which was charged once per target language instead of once on the source text.
 
 ## Result
 
-Automates a step that previously required manual intervention to route each project between the two systems, reducing the waiting time between the opening of a translation project and the availability of the first automatic draft.
+The handover between portal, project management and translation engine is automatic from the quote to the delivery of the first draft, with human intervention only where the service calls for it.

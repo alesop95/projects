@@ -1,23 +1,23 @@
 # Plataforma interna de inteligencia artificial generativa
 
-!!! tip "Proyecto insignia, en evolución continua" El más significativo entre los proyectos internos descritos en esta sección, en desarrollo activo: aborda IA generativa, infraestructura de GPU dedicada, orquestación de agentes e integración con el sistema de identidad corporativa. Esta página se ampliará más adelante cuando el trabajo se estabilice.
-
 **Sector**: empresa de servicios lingüísticos y traducción profesional
 
-**Periodo**: por confirmar - en curso
+**Periodo**: 03/2025 - en curso
 
 **Rol**: IT Manager, desarrollador full-stack, I+D
 
-**Tecnologías**: Ollama (LLM autoalojado en GPU dedicada), RAG (retrieval-augmented generation), Qdrant (base de datos vectorial), n8n (orquestación de workflows de IA agéntica), autenticación SSO corporativa, proxy inverso en LAN protegida, Model Context Protocol (MCP), frontend propietario
+**Tecnologías**: Ollama con modelos de código abierto en GPU dedicada, RAG con Qdrant y embeddings bge-m3, n8n para la orquestación de los workflows, backend Node.js, frontend React, Nginx como proxy inverso, Docker Compose, autenticación con la identidad corporativa (SSO), Model Context Protocol (MCP) en el entorno de pruebas
 
 ## Contexto
 
-La empresa quería un asistente conversacional interno basado en inteligencia artificial generativa, con acceso al contexto documental corporativo, sin depender de servicios cloud de terceros para cada interacción y con pleno control sobre los datos y la infraestructura. También era necesaria una forma de extender las capacidades del asistente con herramientas personalizadas, sin limitarse a una simple interfaz de chat.
+La empresa quería un asistente interno que respondiera sobre la documentación corporativa sin enviar los documentos a servicios externos de inteligencia artificial, sobre hardware ya disponible. La pregunta técnica era si una sola GPU en una máquina reutilizada bastaba para servir una aplicación empresarial con tiempos de respuesta aceptables.
 
 ## Qué se hizo
 
-Plataforma interna de IA generativa construida alrededor de Ollama como motor de inferencia autoalojado en hardware dedicado con GPU, con pruebas de referencia (benchmarks) e I+D para validar las decisiones de modelo y hardware. Un sistema RAG con Qdrant como base de datos vectorial proporciona el contexto documental corporativo al modelo. Los agentes de IA orquestan flujos de trabajo personalizados mediante n8n, con la posibilidad de componer distintos workflows según el perfil de quien accede. El acceso se realiza a través del mismo sistema de identidad corporativa (SSO) usado para los demás servicios, de modo que el asistente reconozca al usuario y aplique el contexto adecuado. El frontend se ha escrito desde cero con la identidad visual corporativa, y también actúa como cliente MCP (Model Context Protocol) en la red interna hacia servidores MCP personalizados, tanto centralizados como distribuidos en endpoints individuales. La infraestructura se expone en la red interna mediante un proxy inverso protegido, con entornos de prueba y producción separados.
+La primera versión, iniciada en 2025, usaba n8n, una base de datos vectorial local y un modelo ejecutado en CPU, con latencias altas en los modelos más grandes. En 2026 la aplicación se reescribió con un backend Node.js, un frontend React y Qdrant como base de datos vectorial, en contenedores detrás de un proxy inverso, con la inferencia a cargo de Ollama en un host de la red interna con GPU dedicada. El flujo en producción es un chat RAG: la pregunta se convierte en embedding, Qdrant devuelve los pasajes pertinentes y un agente de n8n genera la respuesta con ese contexto; un segundo flujo indexa los PDF que suben los administradores. El acceso pasa por la identidad corporativa.
+
+En un entorno de pruebas separado, hoy fuera de servicio, existe un servidor MCP que expone herramientas filtradas por departamento, pensado para un primer caso de uso en la redacción de borradores de correos comerciales; no forma parte del stack de producción. En paralelo se realizó un benchmark entre CPU y GPU y entre modelos de distinto tamaño, sobre el que se está preparando un whitepaper.
 
 ## Resultado
 
-Un asistente de IA interno personalizado según el contexto corporativo, con los datos y la inferencia bajo control directo de la empresa en lugar de confiarlos por completo a servicios cloud de terceros, y una arquitectura extensible que permite añadir nuevas herramientas y flujos sin tener que reescribir el frontend.
+El chat sobre documentos corporativos está en producción, con la inferencia y el archivo documental en la red interna; la autenticación, en cambio, pasa por un servicio de identidad externo. La ampliación con herramientas mediante MCP sigue en fase de pruebas, y los resultados del benchmark se publicarán con el whitepaper.

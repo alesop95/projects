@@ -6,16 +6,18 @@ These pages are not generated automatically: `scripts/check_company_changes.py` 
 
 | Project | Period | Role |
 |---|---|---|
-| [Scenia®: multilingual SaaS portal for a translation service](translation-service-portal.md) (public product and registered trademark, [scenia.it](https://scenia.it/)) | 10/2024 - ongoing | IT Manager, full-stack developer |
-| [Internal generative artificial intelligence platform](internal-generative-ai-platform.md) (flagship project, continuously evolving) | to be confirmed - ongoing | IT Manager, full-stack developer, R&D |
-| [IT asset management portal and ISO/IEC 27001 compliance](it-asset-management-portal.md) | 05/2025 - ongoing | IT Manager, product owner and full-stack developer |
-| [Integration backend for a translation service](translation-integration-backend.md) | 03/2025 - ongoing | IT Manager, backend developer |
+| [Scenia®: multilingual SaaS portal for a translation service](translation-service-portal.md) (public product and registered trademark, [scenia.it](https://scenia.it/)) | 10/2024 - ongoing | IT Manager, development of the integration with the company ERP |
+| [Internal generative artificial intelligence platform](internal-generative-ai-platform.md) | 03/2025 - ongoing | IT Manager, full-stack developer, R&D |
+| [IT asset management portal and ISO/IEC 27001 compliance](it-asset-management-portal.md) | 06/2026 - ongoing | IT Manager, product owner and full-stack developer |
+| [Assisted filling of security and privacy questionnaires](security-questionnaire-compiler.md) | 08/2026 - ongoing | IT Manager, developer |
+| [Integration backend for a translation service](translation-integration-backend.md) | 11/2025 - ongoing | IT Manager, security review and fixes to the credit calculation |
+| [Automation for language production](translation-production-automation.md) | 10/2024 - ongoing | IT Manager, script developer |
 | [Corporate network design and documentation](network-infrastructure-documentation.md) | 10/2024 - ongoing | IT Manager, network administrator |
-| [ERP integration application and invoicing data parsing](invoicing-data-integration-app.md) | to be confirmed | IT Manager, full-stack developer |
-| [Software license migration and lifecycle management](software-license-lifecycle-management.md) | to be confirmed | IT Manager, system administrator |
-| [Time and attendance software migration](time-attendance-software-management.md) | to be confirmed | IT Manager, system administrator |
-| [Company website migration, containerization and evolution](company-website-migration-containerization.md) | 07/2026 - ongoing | IT Manager, system administrator |
-| [Migration of a legacy management software to a supported operating system](legacy-management-software-migration.md) | to be confirmed | IT Manager, system administrator |
-| [IT project management platform with Gantt charts](it-project-management-platform.md) | to be confirmed | IT Manager |
-| [Corporate mailbox monitoring toolkit](mailbox-monitoring-toolkit.md) | 06/2026 - ongoing | IT Manager, system administrator |
-| [Mailbox export and archiving toolkit](mailbox-export-archiving-toolkit.md) | 06/2026 - ongoing | IT Manager, system administrator |
+| [ERP integration application and invoicing data parsing](invoicing-data-integration-app.md) | 11/2024 - ongoing | IT Manager: takeover, documentation and deployment on a virtual machine |
+| [Software license migration and lifecycle management](software-license-lifecycle-management.md) | 01/2025 - 03/2025 | IT Manager, migration lead and systems administrator |
+| [Time and attendance software migration](time-attendance-software-management.md) | 02/2025, completed | IT Manager, systems administrator |
+| [Company website migration, containerization and evolution](company-website-migration-containerization.md) | 07/2026 - ongoing | IT Manager, environment architecture, systems administrator |
+| [Migration of a legacy management software to a supported operating system](legacy-management-software-migration.md) | 02/2026 - ongoing | IT Manager, systems administrator |
+| [Containerized deployment of an open-source project management platform](it-project-management-platform.md) | 10/2025, installed and not in use | IT Manager, systems administrator |
+| [Corporate mailbox monitoring toolkit](mailbox-monitoring-toolkit.md) | 05/2026 - ongoing | IT Manager, systems administrator |
+| [Mailbox and chat export and archiving toolkit](mailbox-export-archiving-toolkit.md) | 06/2026, completed | IT Manager, systems administrator |

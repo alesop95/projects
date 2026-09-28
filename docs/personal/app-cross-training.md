@@ -1,13 +1,9 @@
 # app-cross-training
 
-_Nessuna descrizione su GitHub._
-
 - **Repository**: [alesop95/app-cross-training](https://github.com/alesop95/app-cross-training)
-- **Linguaggi**: -
-- **Data di inizio**: 2026-06
-- **Ultimo aggiornamento**: 2026-07-14
-- **Cartella locale**: `app-cross-training`
+- **Tecnologie**: Flutter, Dart
+- **Periodo**: 06/2026, fermo
 
-X CROSS Training è un'app mobile Flutter per programmare allenamenti di cross-training e functional training, costruita a partire da un set di specifiche e dataset ricavati da una presentazione PowerPoint e da un foglio di calcolo Excel già esistenti. Il repository è nato come pacchetto di sole specifiche (documenti, modello dati, dataset JSON) da consegnare a uno sviluppatore, ed è poi cresciuto fino a includere uno scaffold Flutter vero e proprio: design system, componenti riutilizzabili e le schermate principali dell'app.
+App mobile Flutter per programmare allenamenti di cross-training, nata da specifiche e dataset ricavati da una presentazione PowerPoint e da un foglio Excel preesistenti. Gli allenamenti combinano esercizi di tre famiglie, pesistica, ginnastica e locomozione, in gruppi senza ripetizione di uno, due o tre elementi lungo un ciclo. La logica deriva da un prototipo Excel che estraeva combinazioni senza reinserimento con RANDBETWEEN su un intervallo decrescente, una variante di Fisher-Yates, ed è riscritta come classe Dart pura con filtri per attrezzatura, livello e gruppi abilitati, coperta da test.
 
-L'idea centrale del prodotto è costruire gli allenamenti combinando esercizi provenienti da tre famiglie, pesistica, ginnastica e locomozione, in combinazioni senza ripetizioni di uno, due o tre elementi lungo un ciclo di allenamento. La progettazione deriva da un prototipo Excel funzionante che usava RANDBETWEEN su un intervallo decrescente per estrarre combinazioni senza reinserimento, una variante dell'algoritmo di Fisher-Yates. Nel codice Flutter questa logica è implementata come classe CombinationGenerator, con filtri per attrezzatura disponibile, livello dell'atleta e gruppi di esercizi abilitati, logica pura senza dipendenze da Flutter e quindi testabile in isolamento (con una suite di test dedicata). Il repository contiene oggi più di una semplice pianificazione: uno scaffold Flutter con design system a temi selezionabili, le schermate principali fedeli al mockup, un timer Tabata funzionante e il generatore di combinazioni con i suoi test, anche se non ancora compilato né eseguito su un ambiente reale (Flutter non è installato sulla macchina su cui è stato scritto).
+Stato: fermo. Specifiche, dataset JSON, cinque direzioni grafiche con mockup e uno scaffold con le schermate principali e un timer Tabata sono scritti ma non compilati, perché Flutter non era installato sulla macchina di sviluppo.

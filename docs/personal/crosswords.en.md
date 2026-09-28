@@ -3,11 +3,9 @@
 A personal repo to develop new crossword games (italian language)
 
 - **Repository**: [alesop95/crosswords](https://github.com/alesop95/crosswords)
-- **Languages**: TypeScript, PowerShell, Shell, Python
-- **Start date**: 2026-07
-- **Last updated**: 2026-07-14
-- **Local folder**: `crosswords`
+- **Technologies**: TypeScript, Vite, Web Worker
+- **Period**: 07/2026, completed
 
-A local-first, no-backend web app for building traditional Italian-style crossword grids (parole crociate), written in TypeScript with Vite. Beyond the expected grid editor with free black squares and optional symmetry, and a clue editor with ipuz export and print support, the interesting engineering is in the automatic fill: the codebase implements a constraint-satisfaction solver with arc-consistency propagation, run off the main thread in a web worker, rather than a naive brute-force word matcher, so the UI stays responsive while filling large grids. The candidate dictionary is generated from the Morph-it! Italian lexicon and annotated with frequency scores, letting the solver prefer common words during autofill.
+Italian-style crossword builder that runs in the browser with no server: all the work stays on the user's machine. You draw the grid (free black squares, optional symmetry, from 5x5 to 25x25), fill it automatically or word by word, write the clues, save in ipuz format and print grid and solution on A4. The app is online at [alesop95.github.io/crosswords](https://alesop95.github.io/crosswords/) and is republished by GitHub Actions on every push.
 
-The project also documents, in a dedicated docs file, the Italian legal and tax framework for selling crosswords to print magazines, suggesting it is being built with an eye toward a concrete, if modest, commercial use rather than as a pure exercise. It is explicitly marked as in-progress, with unit and performance tests already in place around the solver.
+Autofill is a constraint solver (backtracking with the MRV heuristic, forward checking and arc consistency) running in a Web Worker, so the interface stays responsive and the fill can be interrupted. The dictionary, about 350,000 entries, is generated from Morph-it! and weighted with itWaC frequencies, so the solver prefers common words. The repository also documents the Italian legal and tax framework for selling crosswords to magazines. Version 1 is closed.

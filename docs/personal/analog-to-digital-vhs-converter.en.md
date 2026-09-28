@@ -3,11 +3,9 @@
 A personal project to collect memories coming from tapes
 
 - **Repository**: [alesop95/analog-to-digital-VHS-converter](https://github.com/alesop95/analog-to-digital-VHS-converter)
-- **Languages**: PowerShell, Shell, Python, JavaScript
-- **Start date**: 2026-06
-- **Last updated**: 2026-07-06
-- **Local folder**: `analog-to-digital-VHS-converter`
+- **Technologies**: OBS Studio, StarTech SVID2USB232, Topaz Video AI (previsto)
+- **Period**: 06/2026, paused
 
-This repository is a documentation project, not an application: it captures the hardware and software workflow for digitizing VHS tapes into a preservation-quality digital master. It documents a specific signal chain (a Daewoo ST220 PAL VCR through a SCART-to-composite adapter into a StarTech SVID2USB232 capture card with an EM28xx chipset), the OBS Studio capture settings, and the reasoning behind them, notably the choice to preserve both interlaced fields (50 per second) instead of deinterlacing at capture time, since consumer capture dongles commonly discard one field and lose it irrecoverably. The defined master format is uncompressed-audio AVI with intra-frame MJPEG at 720x576, chosen because MJPEG tolerates unpredictable analog noise better than inter-frame codecs and AVI accepts interlaced PCM streams without forcing a streaming container.
+Operating documentation for the chain that digitizes VHS tapes into a preservation master; the repository contains no application. The chain is a Daewoo ST220 PAL VCR, a SCART-to-composite adapter and a StarTech SVID2USB232 capture card (EM28xx chipset), with capture in OBS Studio. The master is AVI with intra-frame MJPEG video at 720x576 and uncompressed 48 kHz PCM audio, and it keeps both interlaced fields (50 per second) instead of deinterlacing at capture time, because consumer dongles tend to drop one of them irrecoverably. MJPEG is chosen because it tolerates analog noise better than inter-frame codecs.
 
-According to its own status checklist, the project has validated the hardware chain and the OBS configuration but has not yet produced a first full master capture, and the AI upscaling step (via Topaz Video AI) and the client delivery workflow are still open. It reads as a technical runbook for a personal VHS-to-digital service still being set up, not a finished pipeline.
+Status: hardware chain, driver and OBS configuration verified with a test capture. Still missing are the first master capture with the final settings, the upscaling step with Topaz Video AI and the delivery workflow (formats, pricing).

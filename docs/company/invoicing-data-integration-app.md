@@ -2,20 +2,20 @@
 
 **Settore**: azienda di servizi linguistici e traduzione professionale
 
-**Periodo**: da confermare
+**Periodo**: 11/2024 - in corso
 
-**Ruolo**: IT Manager, sviluppatore full-stack
+**Ruolo**: IT Manager: presa in carico, documentazione e messa in esercizio su macchina virtuale
 
-**Tecnologie**: React, XML-RPC, integrazione con un gestionale ERP/CRM open source, parsing di dati strutturati
+**Tecnologie**: Next.js e React, Python con Flask, XML-RPC verso un gestionale ERP open source, elaborazione di file Excel, Ubuntu su macchina virtuale
 
 ## Contesto
 
-I dati di fatturazione aziendale vivono in un gestionale ERP che espone un'interfaccia XML-RPC: serviva un'applicazione proprietaria capace di interrogare quel gestionale ed estrarre i dati di fatturazione in un formato utilizzabile da altri processi interni, con un ambiente di test separato da quello di produzione.
+Per un grande cliente la fatturazione mensile richiede un report che il gestionale non produce da solo: i dati che il cliente chiede, cioè quantità e tariffe per ogni ordine, stanno sulle righe degli ordini e non sulla testata, e ricostruirli a mano ogni mese era lento e soggetto a errori.
 
 ## Cosa è stato fatto
 
-Applicazione React che comunica via XML-RPC con un gestionale ERP/CRM open source per estrarre i dati di fatturazione, con un parsing avanzato per normalizzare e interpretare i dati strutturati restituiti dal gestionale. Adotta un flusso di gestione test/produzione con una propria filosofia di promozione delle modifiche dall'ambiente di sviluppo a quello di produzione, distinta da quella di altri progetti interni.
+L'applicazione è stata sviluppata da un ex collega; io l'ho presa in carico, l'ho documentata passo per passo e l'ho messa in esercizio su una macchina virtuale interna, dove prima girava su una singola postazione. Il frontend Next.js e il backend Python Flask ricevono il riepilogo mensile inviato dal cliente in Excel, leggono dal gestionale via XML-RPC le righe degli ordini corrispondenti e restituiscono il report completo, da cui parte la fatturazione.
 
 ## Risultato
 
-Un livello di integrazione dedicato tra il gestionale e i processi che consumano i dati di fatturazione, con un ambiente di test isolato che permette di validare le modifiche prima del rilascio.
+La rendicontazione mensile per il cliente è una procedura di caricamento e scaricamento invece di una ricostruzione manuale, e non dipende più dal computer di una singola persona.

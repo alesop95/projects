@@ -2,20 +2,20 @@
 
 **Settore**: azienda di servizi linguistici e traduzione professionale
 
-**Periodo**: da confermare (durata: alcuni mesi)
+**Periodo**: 02/2026 - in corso
 
 **Ruolo**: IT Manager, sistemista
 
-**Tecnologie**: Ubuntu 10 → Ubuntu 24.04 LTS, patch applicative, gestione utenti su rete LAN
+**Tecnologie**: Ubuntu 10.04 LTS → Ubuntu 24.04 LTS, Docker, contenitori separati per esercizio e collaudo, database relazionale, Proxmox VE
 
 ## Contesto
 
-Un gestionale aziendale legacy, risalente alla metà degli anni 2000, girava ancora su una distribuzione Linux da tempo priva di supporto e aggiornamenti di sicurezza, con un rischio crescente di incompatibilità e vulnerabilità non risolte.
+Il gestionale che l'azienda ha usato per il lavoro quotidiano fino al 2021, un'applicazione web della metà degli anni 2000, oggi serve come archivio: lo si consulta internamente per i dati storici. Girava su un server Ubuntu 10.04 LTS, una distribuzione fuori supporto da molti anni, dentro l'infrastruttura virtualizzata aziendale.
 
 ## Cosa è stato fatto
 
-Migrazione, durata alcuni mesi, del gestionale legacy da Ubuntu 10 a Ubuntu 24.04 LTS, con il ripristino 1:1 di tutte le patch applicative necessarie per mantenere la compatibilità con gli utenti specifici della rete LAN che dipendono dal gestionale, documentata nel dettaglio per riferimento futuro.
+Il gestionale è stato ricostruito su una nuova macchina virtuale Ubuntu 24.04 LTS sull'infrastruttura Proxmox, con l'applicazione e il suo database in contenitori. Sulla stessa macchina girano due istanze indipendenti, una di esercizio e una di collaudo, ciascuna con il proprio database, così che le modifiche si provino prima di toccare l'archivio consultato dagli utenti. La migrazione è stata condotta come IT Manager, con il contributo del gruppo di lavoro.
 
 ## Risultato
 
-Un gestionale critico per l'attività aziendale riportato su un sistema operativo supportato e patchabile, eliminando il rischio accumulato di girare su una distribuzione end-of-life, senza perdita di funzionalità per gli utenti finali.
+I dati storici sono consultabili da un'istanza che gira su un sistema operativo supportato, con un ambiente di collaudo separato da quello di esercizio. Il lavoro è in corso: il vecchio server è ancora acceso e la sua dismissione resta da completare.

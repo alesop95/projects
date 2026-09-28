@@ -3,11 +3,9 @@
 The technical under the hood of my book writing
 
 - **Repository**: [alesop95/harmony-book](https://github.com/alesop95/harmony-book)
-- **Languages**: PowerShell, Shell, Python, JavaScript
-- **Start date**: 2026-06
-- **Last updated**: 2026-07-06
-- **Local folder**: `harmony-book`
+- **Technologies**: LuaLaTeX (memoir), LilyPond, biblatex e biber, TinyTeX, Python
+- **Period**: 06/2026 - ongoing
 
-This repository is not a software project but the publishing toolchain for a book on Western harmony (music theory): it versions the typographic method and build pipeline, not the manuscript itself. Composition uses LuaLaTeX with the memoir class for native Unicode and OpenType fonts, LilyPond embedded through lilypond-book for musical examples, biblatex/biber for the bibliography, and imakeidx/glossaries for the index and glossary; the whole TeX environment is a reproducible, user-local TinyTeX install described by a package manifest, so the build is portable between Windows and Linux.
+Publishing toolchain for a book on harmony: the repository versions the typographic method and the build, while the text of the book stays out of git. Typesetting uses LuaLaTeX with the memoir class, LilyPond embedded through lilypond-book for the musical examples, biblatex and biber for the bibliography, imakeidx and glossaries for index and glossary. The TeX environment is a local TinyTeX installation described by a package manifest, reproducible on Windows and Linux.
 
-The actual chapters, musical examples, and bibliography of the book live in a `manuscript/` folder that is deliberately gitignored and kept out of this public repository, since that content is meant to be sold rather than published; only a minimal `sample/` document ships here to prove the build chain works end to end. What is public, in other words, is the reusable structure, macros, and build scripts for self-publishing a heavily typeset, music-notation-heavy book with LaTeX, not the finished text.
+The manuscript (chapters, examples, bibliography) sits in a folder excluded from git because it is meant for sale; a sample document shows that the chain works. The repository also contains Python tools for the music theory used in the book, such as computing the tritone content of scales and deriving secondary dominants, and a knowledge base on the sources consulted.

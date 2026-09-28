@@ -3,11 +3,9 @@
 Bachelor degree project
 
 - **Repository**: [alesop95/gps-time-synchronization-arduino-stm32](https://github.com/alesop95/gps-time-synchronization-arduino-stm32)
-- **Linguaggi**: C, C++, Python
-- **Data di inizio**: 2026-01
-- **Ultimo aggiornamento**: 2026-07-14
-- **Cartella locale**: `gps-time-synchronization-arduino-stm32`
+- **Tecnologie**: Arduino (C++), STM32 HAL, Contiki OS, Python 2.7 (pySerial)
+- **Periodo**: 2017, concluso
 
-Questo repository contiene il lavoro sperimentale per una tesi di laurea triennale in Ingegneria Elettronica/Informatica che misura e confronta la deriva dell'orologio (clock drift) su due piattaforme embedded rispetto al tempo GPS come riferimento assoluto. Un Arduino Uno, basato sul contatore software millis(), e uno STM32 Nucleo (famiglia STM32L1), che pilota il proprio RTC hardware con un cristallo esterno da 32.768 kHz, ricevono entrambi frasi NMEA dallo stesso modulo GPS e registrano lo scarto tra il proprio orologio e il tempo GPS durante acquisizioni di più ore.
+Lavoro sperimentale della tesi di laurea triennale in Ingegneria elettronica: misura la deriva dell'orologio di due piattaforme embedded usando il tempo GPS come riferimento. Un Arduino Uno, che conta il tempo con il contatore software millis(), e uno STM32 Nucleo della famiglia L1, che usa il proprio RTC hardware con un cristallo esterno da 32,768 kHz, ricevono le frasi NMEA dallo stesso modulo GPS e registrano lo scarto per più ore.
 
-Sul lato Arduino, uno sketch basato su SoftwareSerial esegue il parsing del campo orario nella frase $GPGGA e trasmette il tempo GPS abbinato a millis() via USB a un logger Python (2.7, pySerial) che scrive file CSV per l'analisi offline. Il firmware STM32, costruito su Contiki OS e STM32 HAL, configura i prescaler async/sync dell'RTC per un tick a 1 Hz derivato dall'oscillatore LSE e confronta periodicamente il tempo dell'RTC con un fix GPS aggiornato. Su un'esecuzione di circa quattro ore, i risultati mostrano l'orologio software dell'Arduino derivare di circa 5 secondi contro circa 1,6 secondi per l'RTC hardware dello STM32, una dimostrazione concreta e misurata del perché un RTC pilotato da cristallo sia superiore a un contatore software in millisecondi per la cronometria su lunga durata.
+Su Arduino uno sketch legge l'ora dalla frase $GPGGA e la invia con millis() a un logger Python che scrive CSV. Il firmware STM32, su Contiki OS e HAL, configura i prescaler dell'RTC per un tick a 1 Hz dall'oscillatore LSE e lo confronta periodicamente con il GPS. Su circa quattro ore l'Arduino deriva di circa 5 secondi, lo STM32 di circa 1,6: l'RTC a cristallo è circa tre volte più stabile.

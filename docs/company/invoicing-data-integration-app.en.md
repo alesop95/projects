@@ -2,20 +2,20 @@
 
 **Sector**: language services and professional translation company
 
-**Period**: to be confirmed
+**Period**: 11/2024 - ongoing
 
-**Role**: IT Manager, full-stack developer
+**Role**: IT Manager: takeover, documentation and deployment on a virtual machine
 
-**Technologies**: React, XML-RPC, integration with an open-source ERP/CRM system, structured data parsing
+**Technologies**: Next.js and React, Python with Flask, XML-RPC to an open-source ERP, Excel file processing, Ubuntu on a virtual machine
 
 ## Context
 
-The company's invoicing data lives in an ERP system that exposes an XML-RPC interface: a proprietary application was needed to query that system and extract invoicing data in a format usable by other internal processes, with a test environment kept separate from production.
+For a large client, monthly invoicing requires a report that the ERP does not produce on its own: the data the client asks for, namely quantities and rates for each order, sit on the order lines rather than on the order header, and rebuilding them by hand every month was slow and error-prone.
 
 ## What was done
 
-React application that communicates via XML-RPC with an open-source ERP/CRM system to extract invoicing data, with advanced parsing to normalize and interpret the structured data returned by the system. It adopts a test/production management workflow with its own approach to promoting changes from the development environment to production, distinct from that used by other internal projects.
+The application was developed by a former colleague; I took it over, documented it step by step and put it into service on an internal virtual machine, whereas it previously ran on a single workstation. The Next.js frontend and the Python Flask backend take the monthly summary sent by the client in Excel, read the matching order lines from the ERP over XML-RPC and return the complete report from which invoicing starts.
 
 ## Result
 
-A dedicated integration layer between the ERP system and the processes that consume invoicing data, with an isolated test environment that allows changes to be validated before release.
+Monthly reporting for the client is an upload-and-download procedure instead of a manual reconstruction, and it no longer depends on one person's computer.

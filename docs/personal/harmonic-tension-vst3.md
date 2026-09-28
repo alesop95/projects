@@ -1,13 +1,9 @@
 # harmonic-tension-vst3
 
-_Nessuna descrizione su GitHub._
-
 - **Repository**: [alesop95/harmonic-tension-vst3](https://github.com/alesop95/harmonic-tension-vst3)
-- **Linguaggi**: C++
-- **Data di inizio**: 2019-12
-- **Ultimo aggiornamento**: 2026-07-14
-- **Cartella locale**: `harmonic-tension-vst3`
+- **Tecnologie**: C++, JUCE, VST3
+- **Periodo**: 03/2019 - 08/2019, concluso
 
-Questo è un plugin audio VST3, costruito in C++ sul framework JUCE, che ascolta il MIDI in ingresso in tempo reale e trasforma l'analisi armonica in un segnale di controllo live per l'illuminazione del palco anziché per il suono. Implementa lo Spiral Array Model di Elaine Chew, una rappresentazione geometrica dell'armonia tonale, calcolando metriche come tensione armonica, diametro della nuvola (cloud diameter) e tensile strain a partire dalla sequenza di note suonate e dalla loro tempistica, per poi stimare la tonalità corrente trovando il punto più vicino sulla spirale al centro di effetto delle note. L'idea è stata dimostrata dal vivo, mappando i valori di tensione derivati su variazioni di luminosità e pattern delle luci di scena, all'evento di musica elettronica Festivalle nella Valle dei Templi nell'agosto 2019 ([video della demo](https://www.youtube.com/watch?v=wB-U9s4ASQo)).
+Plugin VST3 in C++ su JUCE che analizza in tempo reale il MIDI in ingresso e trasforma l'armonia in un segnale di controllo per le luci di scena invece che per il suono. Implementa lo Spiral Array Model di Elaine Chew, una rappresentazione geometrica dell'armonia tonale: dalle note suonate e dalla loro durata calcola tensione armonica, diametro della nuvola e tensile strain, e stima la tonalità corrente come il punto della spirale più vicino al centro di effetto delle note.
 
-La classe processore stessa si chiama ancora `ProgettoProvaAudioProcessor` ("test project" in italiano) nel codice sorgente, un residuo di denominazione dello scaffolding di progetto di JUCE che segnala come questo sia rimasto un prototipo funzionante piuttosto che una release rifinita e rinominata. Il [PDF del modello Spiral Array](https://drive.proton.me/urls/KHMJ76J6RR#cSM_oJpX6Ky4) allegato nel repository documenta il modello geometrico sottostante e il caso d'uso dell'illuminazione intelligente più in profondità di quanto facciano i commenti nel codice.
+Il sistema è stato provato dal vivo al festival di musica elettronica Festivalle, nella Valle dei Templi, ad agosto 2019, con la tensione mappata su luminosità e pattern delle luci ([video della demo](https://www.youtube.com/watch?v=wB-U9s4ASQo)). Il [documento sul modello](https://drive.proton.me/urls/KHMJ76J6RR#cSM_oJpX6Ky4) descrive la geometria e il caso d'uso più in dettaglio.

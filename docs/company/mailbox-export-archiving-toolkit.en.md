@@ -1,21 +1,23 @@
-# Mailbox export and archiving toolkit
+# Mailbox and chat export and archiving toolkit
 
 **Sector**: language services and professional translation company
 
-**Period**: 06/2026 - ongoing
+**Period**: 06/2026, completed
 
-**Role**: IT Manager, system administrator
+**Role**: IT Manager, systems administrator
 
-**Technologies**: PowerShell, Microsoft 365 / Exchange Online, Microsoft Purview eDiscovery, Outlook, checksums for integrity verification
+**Technologies**: PowerShell, Exchange Online PowerShell, Microsoft Graph, classic Outlook (COM automation), PST files, SHA-256, Microsoft Word (COM automation)
 
 ## Context
 
-Two shared mailboxes had reached full saturation, both on the primary mailbox and on the linked online archive. Before freeing up space, a static and verifiable export of the content to a network resource was needed, with the guarantee that no message would be lost or corrupted in the process.
+Two shared mailboxes had a full online archive. Before freeing up space, a static and verified copy of the entire content, primary mailbox and archive, was needed on a network archive. In the same period a related need came up for the company chats: extracting channel and conversation messages in a form that could be consulted for audits and searches.
 
-## What was built
+## What was done
 
-A reusable operational toolkit for the static export of mailboxes to an archiving network resource. The reference method identified is server-side PST export via Microsoft Purview eDiscovery; in the absence of the required license on the operator, the process was adapted to an equivalent client-side export from classic Outlook. The toolkit includes read-only PowerShell verification scripts and an archiving step with checksum calculation to guarantee the integrity of the exported files. The scripts deliberately operate in read-only and export mode only: no mailbox deletion is automated, that step remains a separate action, explicitly authorized only once the export has been verified.
+The planned method for the mail was server-side export through eDiscovery; the current version of the tool, however, requires an enterprise-level license for anyone working on cases, and the decision was not to buy it. The export was therefore run from classic Outlook, splitting the largest folders by date range, because long streams from the online archive kept breaking off. Completeness was proven by counting the items of each exported file folder by folder and comparing them with the server-side counts, excluding the system folders that cannot be exported, since the size of a file that has stopped growing does not prove that the export has finished. The files were copied to the network archive with SHA-256 verification. The PowerShell scripts only read and export; deleting the content is a separate step, described in a separate guide and not automated.
+
+For the chats, a PowerShell script was written that reads channel and conversation messages through Microsoft Graph, with a registered application holding only read permissions granted by the administrator. The filters can be combined: senders, date and time window, keywords with several matching modes, mentions, attachments and importance. The export is incremental thanks to a checkpoint with a delta token, it handles request throttling with progressive waits and downloads inline images; the output is a CSV or JSON file with statistics per user and per day. A second script converts the export into a Word document in chronological order, with the images embedded in the text.
 
 ## Result
 
-A repeatable and verifiable archiving path for freeing up saturated mailboxes without risk of data loss, documented well enough to be reapplied to other mailboxes in the future without having to reinvent the process.
+The content of the two mailboxes is archived on the network with matching counts per folder and verified checksums, and the runbook and scripts are parametric and reusable on other mailboxes. The mailboxes have not been emptied yet. The chat script is used whenever an extraction for an audit or a search is needed.

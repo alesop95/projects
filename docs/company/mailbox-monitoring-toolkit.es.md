@@ -2,20 +2,20 @@
 
 **Sector**: empresa de servicios lingüísticos y traducción profesional
 
-**Periodo**: 06/2026 - en curso
+**Periodo**: 05/2026 - en curso
 
 **Rol**: IT Manager, administrador de sistemas
 
-**Tecnologías**: Python, PowerShell, Microsoft 365 / Exchange Online, tareas programadas de Windows, informes en Excel
+**Tecnologías**: PowerShell, Microsoft Graph, Exchange Online PowerShell, aplicación registrada con autenticación por certificado, Python, openpyxl, SQLite, Programador de tareas de Windows
 
 ## Contexto
 
-La monitorización del estado de los buzones de correo corporativos (espacio ocupado, umbrales críticos, evolución en el tiempo) se hacía de forma manual, sin un punto de recopilación histórico en el que basar decisiones de capacity planning o alertas oportunas antes de que un buzón se llenara.
+Los buzones de la empresa se llenaban sin previo aviso, y un buzón principal lleno deja de recibir correo. No existía un histórico de ocupación con el que valorar el crecimiento de cada buzón.
 
 ## Qué se hizo
 
-Toolkit de monitorización e informes ejecutado periódicamente mediante tareas programadas de Windows: un script de Python consulta el estado de los buzones de Exchange Online y genera alertas cuando un buzón supera un umbral crítico, un segundo script produce informes y tendencias históricas en Excel. La capa de lanzamiento y ejecución programada está en PowerShell. Las credenciales y los datos reales de los buzones permanecen exclusivamente locales, nunca versionados.
+Un script de PowerShell, ejecutado cada mañana por una tarea programada, lee todos los buzones mediante Microsoft Graph y Exchange Online, recoge 22 métricas de cada uno (ocupación y cuota del buzón principal y del archivo, crecimiento en los últimos 30 días, inactividad, reenvíos automáticos, retenciones legales) y las guarda en una base de datos SQLite que conserva el histórico sin caducidad. El mismo script evalúa los umbrales y envía los avisos. La autenticación usa una aplicación registrada con certificado, así que la ejecución no requiere inicios de sesión interactivos. El buzón principal y el archivo en línea se tratan como dos problemas distintos: al superar el 80% o el 95%, el departamento de TI recibe un resumen y el titular del buzón una notificación personal, con un texto distinto para cada uno de los dos umbrales, mientras que los buzones de salas y equipos quedan excluidos. Python tiene un papel acotado: dos scripts generan los informes diarios en Excel, separados entre buzones con licencia y buzones funcionales, y un informe semanal de tendencias.
 
 ## Resultado
 
-Alerta automática sobre los buzones en riesgo de saturación antes de que se conviertan en un problema operativo, y un histórico de tendencias que antes no existía, útil para planificar intervenciones de limpieza o redimensionamiento con antelación en lugar de en emergencia.
+El toolkit está en funcionamiento diario desde mayo de 2026 y ha acumulado un histórico diario de la ocupación de todos los buzones, con los informes semanales de tendencias generados automáticamente.

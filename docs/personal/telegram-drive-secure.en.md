@@ -3,11 +3,9 @@
 A customization from the https://github.com/caamer20/Telegram-Drive repo without forking it.
 
 - **Repository**: [alesop95/telegram-drive-secure](https://github.com/alesop95/telegram-drive-secure)
-- **Languages**: TypeScript, Rust, PowerShell, Python
-- **Start date**: 2026-07
-- **Last updated**: 2026-07-02
-- **Local folder**: `telegram-drive-secure-fork`
+- **Technologies**: Tauri, Rust, React (fork)
+- **Period**: 07/2026, paused
 
-This is a customization of the open-source desktop app caamer20/Telegram-Drive rather than an independently written project or a formal GitHub fork: the upstream code (Tauri, Rust, React, using Telegram's own servers as a file backend, with channels standing in for folders) was imported at a pinned upstream commit without preserving its original commit history, a decision recorded explicitly in the project's own notes. The stated goal is to add client-side end-to-end encryption of files before upload and general attack-surface hardening on top of the imported app, but as of the latest commits only two changes have actually landed: the clean import itself, and a pass that strips references to the original author from the app identifier and product name plus a review of the inherited CI workflow. The encryption module and the broader hardening work are still planned, not implemented.
+A customization of the open-source desktop app caamer20/Telegram-Drive, written in Tauri, Rust and React, which uses Telegram's servers as file storage with channels in place of folders. The upstream code was imported at commit `8715927` (v1.9.7) without its original history and without a GitHub fork, a choice recorded in the project's decisions. The goal is to add client-side end-to-end encryption of files before upload and general hardening of the imported app.
 
-Worth noting for anyone reading the code: the upstream README claims an MIT license, but no `LICENSE` file was present in the imported source tree, a discrepancy the project's own documentation flags as unresolved rather than glossing over. The value of this project right now is mostly in the planning documents, threat model, and phased roadmap it carries forward from the fork decision, not in delivered security features.
+So far the clean import has landed, together with a pass that removes references to the original author from the app identifier and product name, and a review of the inherited CI workflow. Client-side encryption is postponed until the development machine has a Rust toolchain to build and test it. The upstream README declares an MIT license, but the imported tree contains no `LICENSE` file: the discrepancy is flagged as unresolved.

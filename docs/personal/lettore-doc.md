@@ -1,0 +1,11 @@
+# lettore-doc
+
+- **Repository**: [alesop95/lettore-doc](https://github.com/alesop95/lettore-doc)
+- **Tecnologie**: Python, PowerShell, graphify, MkDocs
+- **Periodo**: 05/2026 - in corso
+
+Pipeline che legge documentazione tecnica locale in formato .docx, .txt e .md e ne ricava due prodotti indipendenti. Il primo è un vault Obsidian privato, con una nota per documento, un grafo pesato di relazioni e sintesi narrative, che non esce dalla macchina. Il secondo è l'alimentazione della tassonomia pubblica di competenze, pubblicata come sito MkDocs su GitHub Pages: dai documenti si estraggono nodi di evidenza, si classificano rispetto alle pagine di competenza esistenti e si inserisce un blocco di evidenza anonimizzato nella pagina giusta, senza mai pubblicare i documenti.
+
+Il lavoro deterministico è affidato a script Python: parsing a livelli di dettaglio crescenti, estrazione di entità con regex e NER spaCy locale, costruzione del grafo, classificazione dei nodi ed export verso il sito. Nel flusso verso il sito l'unico passo interattivo, e l'unico che consuma token, è l'estrazione del grafo di conoscenza con graphify dentro Claude Code. Prima di graphify un controllo preliminare neutralizza i nomi dei file che lo strumento scarterebbe in silenzio, e prima dell'export un gate obbligatorio rimuove dal diff i residui di dati sensibili; il diff passa comunque da una revisione umana.
+
+A fine luglio 2026 la tassonomia contava otto domini, trentuno pagine di competenza e 239 blocchi di evidenza pubblicati. A settembre è partito un nuovo ciclo di estrazione, ancora in corso.

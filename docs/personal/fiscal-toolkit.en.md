@@ -1,13 +1,9 @@
 # fiscal-toolkit
 
-_No description on GitHub._
-
 - **Repository**: [alesop95/fiscal-toolkit](https://github.com/alesop95/fiscal-toolkit)
-- **Languages**: -
-- **Start date**: 2026-07
-- **Last updated**: 2026-07-14
-- **Local folder**: `fiscal-toolkit`
+- **Technologies**: Node.js, TypeScript, SQLite (node:sqlite), Vitest
+- **Period**: 07/2026 - ongoing
 
-## From the README
+Personal tool for understanding the taxation of an employee in Italy: from gross annual salary (RAL) to net pay, with the weight of IRPEF income tax, tax credits, the tax wedge, INPS contributions and regional and municipal surcharges. The calculation is deterministic and explainable: every item of the result carries the parameter used and the rule it comes from. Parameters live in versioned files per tax year, updated by hand with every Budget Law, and are checked against the legal text indexed by the legal-consultant project.
 
-fiscal-toolkit e' uno strumento personale, non commerciale, pensato per orientarsi tra gli aspetti fiscali della retribuzione in Italia durante una ricerca di lavoro: stimare il netto a partire da una RAL, confrontare il lavoro dipendente con la partita IVA (regime forfettario o ordinario), e capire il peso del cuneo fiscale e delle detrazioni IRPEF su uno stipendio. E' nato il 10 luglio 2026 da una sessione di ricerca condotta nel repository del CV (`my-cv`), ed e' stato spostato qui come progetto a se stante, seguendo lo stesso pattern gia' adottato per altri repository personali collegati…
+Status: the calculation engine for 2025 and 2026 is complete and covered by tests, with a CLI and a first local interface that show the breakdown of the salary and the comparison between years. The comparison between employment and self-employment (partita IVA) is planned but not implemented yet. The next phase, reading real tax documents (Certificazione Unica, payslips), has not started. It is not tax advice.

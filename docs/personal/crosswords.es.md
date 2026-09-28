@@ -3,11 +3,9 @@
 A personal repo to develop new crossword games (italian language)
 
 - **Repositorio**: [alesop95/crosswords](https://github.com/alesop95/crosswords)
-- **Lenguajes**: TypeScript, PowerShell, Shell, Python
-- **Fecha de inicio**: 2026-07
-- **Última actualización**: 2026-07-14
-- **Carpeta local**: `crosswords`
+- **Tecnologías**: TypeScript, Vite, Web Worker
+- **Periodo**: 07/2026, finalizado
 
-Una app web local-first, sin backend, para construir cuadrículas de crucigramas al estilo tradicional italiano (parole crociate), escrita en TypeScript con Vite. Más allá del previsible editor de cuadrícula con casillas negras libres y simetría opcional, y de un editor de pistas con exportación a ipuz y soporte de impresión, la ingeniería interesante está en el rellenado automático: la base de código implementa un solver de satisfacción de restricciones con propagación de arc-consistency, ejecutado fuera del hilo principal en un web worker, en lugar de un simple comparador de palabras por fuerza bruta, de modo que la interfaz permanece receptiva incluso al rellenar cuadrículas grandes. El diccionario de candidatos se genera a partir del léxico italiano Morph-it! y se anota con puntuaciones de frecuencia, lo que permite al solver preferir palabras comunes durante el autorrelleno.
+Constructor de crucigramas al estilo italiano que funciona en el navegador, sin servidor: todo el trabajo se queda en la máquina del usuario. Se dibuja el esquema (casillas negras libres, simetría opcional, de 5x5 a 25x25), se rellena la cuadrícula de forma automática o palabra por palabra, se escriben las definiciones, se guarda en formato ipuz y se imprimen esquema y solución en A4. La app está en línea en [alesop95.github.io/crosswords](https://alesop95.github.io/crosswords/) y se vuelve a publicar con GitHub Actions en cada push.
 
-El proyecto también documenta, en un archivo de documentación dedicado, el marco legal y fiscal italiano para vender crucigramas a revistas impresas, lo que sugiere que se está construyendo pensando en un uso comercial concreto, aunque modesto, más que como un simple ejercicio. Está marcado explícitamente como en desarrollo, con pruebas unitarias y de rendimiento ya implementadas alrededor del solver.
+El rellenado automático es un resolvedor de restricciones (backtracking con heurística MRV, forward checking y consistencia de arcos) ejecutado en un Web Worker, de modo que la interfaz sigue respondiendo y el rellenado se puede interrumpir. El diccionario, unas 350.000 entradas, se genera a partir de Morph-it! y se pondera con las frecuencias de itWaC, así el resolvedor prefiere las palabras comunes. El repositorio documenta también el marco legal y fiscal italiano para vender crucigramas a revistas. La versión 1 está cerrada.

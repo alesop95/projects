@@ -1,0 +1,11 @@
+# lettore-doc
+
+- **Repository**: [alesop95/lettore-doc](https://github.com/alesop95/lettore-doc)
+- **Technologies**: Python, PowerShell, graphify, MkDocs
+- **Period**: 05/2026 - ongoing
+
+A pipeline that reads local technical documentation in .docx, .txt and .md format and derives two independent outputs from it. The first is a private Obsidian vault, with one note per document, a weighted relationship graph and narrative summaries, which never leaves the machine. The second feeds the public skills taxonomy, published as an MkDocs site on GitHub Pages: evidence nodes are extracted from the documents, classified against the existing skill pages, and an anonymized evidence block is inserted into the right page, without ever publishing the documents.
+
+The deterministic work is done by Python scripts: parsing at increasing levels of detail, entity extraction with regex and local spaCy NER, graph construction, node classification and export to the site. In the flow towards the site the only interactive step, and the only one that consumes tokens, is extracting the knowledge graph with graphify inside Claude Code. Before graphify a preliminary check neutralizes the file names the tool would otherwise drop silently, and before export a mandatory gate strips residual sensitive data from the diff; the diff still goes through a human review.
+
+At the end of July 2026 the taxonomy had eight domains, thirty-one skill pages and 239 published evidence blocks. A new extraction cycle started in September and is still in progress.

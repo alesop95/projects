@@ -3,11 +3,9 @@
 A customization from the https://github.com/caamer20/Telegram-Drive repo without forking it.
 
 - **Repository**: [alesop95/telegram-drive-secure](https://github.com/alesop95/telegram-drive-secure)
-- **Linguaggi**: TypeScript, Rust, PowerShell, Python
-- **Data di inizio**: 2026-07
-- **Ultimo aggiornamento**: 2026-07-02
-- **Cartella locale**: `telegram-drive-secure-fork`
+- **Tecnologie**: Tauri, Rust, React (fork)
+- **Periodo**: 07/2026, fermo
 
-Questo e' una personalizzazione dell'app desktop open source caamer20/Telegram-Drive, non un progetto scritto in modo indipendente ne' un fork GitHub formale: il codice a monte (Tauri, Rust, React, che usa i server stessi di Telegram come backend per i file, con i canali al posto delle cartelle) e' stato importato a un commit a monte fissato senza preservarne la cronologia dei commit originale, una decisione registrata esplicitamente nelle note del progetto stesso. L'obiettivo dichiarato e' aggiungere una cifratura end-to-end lato client dei file prima dell'upload e un irrobustimento generale della superficie di attacco sopra l'app importata, ma alla data degli ultimi commit sono effettivamente atterrate solo due modifiche: l'import pulito in se', e un passaggio che rimuove i riferimenti all'autore originale dall'identificatore dell'app e dal nome del prodotto, oltre a una revisione del workflow CI ereditato. Il modulo di cifratura e il piu' ampio lavoro di hardening sono ancora pianificati, non implementati.
+Una personalizzazione dell'app desktop open source caamer20/Telegram-Drive, scritta in Tauri, Rust e React, che usa i server di Telegram come archivio dei file con i canali al posto delle cartelle. Il codice a monte è stato importato al commit `8715927` (v1.9.7) senza la cronologia originale e senza un fork GitHub, una scelta registrata nelle decisioni del progetto. L'obiettivo è aggiungere una cifratura end-to-end dei file lato client prima dell'upload e un irrobustimento generale dell'app importata.
 
-Da notare per chi legge il codice: il README a monte dichiara una licenza MIT, ma nessun file `LICENSE` era presente nell'albero dei sorgenti importato, una discrepanza che la documentazione del progetto segnala come irrisolta invece di sorvolarci sopra. Il valore di questo progetto al momento sta soprattutto nei documenti di pianificazione, nel threat model e nella roadmap a fasi che porta avanti a partire dalla decisione di fork, non in funzionalita' di sicurezza gia' consegnate.
+Finora sono atterrati l'import pulito e un passaggio che toglie i riferimenti all'autore originale dall'identificatore e dal nome del prodotto, insieme alla revisione del workflow CI ereditato. La cifratura lato client è rimandata finché sulla macchina di sviluppo non c'è un toolchain Rust per compilarla e provarla. Il README a monte dichiara una licenza MIT, ma l'albero importato non contiene un file `LICENSE`: la discrepanza è segnalata come irrisolta.

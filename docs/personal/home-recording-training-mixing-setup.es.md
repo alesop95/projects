@@ -1,13 +1,9 @@
 # home-recording-training-mixing-setup
 
-_Sin descripción en GitHub._
-
 - **Repositorio**: [alesop95/home-recording-training-mixing-setup](https://github.com/alesop95/home-recording-training-mixing-setup)
-- **Lenguajes**: PowerShell, Shell, Python, JavaScript
-- **Fecha de inicio**: 2026-06
-- **Última actualización**: 2026-07-14
-- **Carpeta local**: `home-recording-training-mixing-setup`
+- **Tecnologías**: Ubuntu Studio, kernel generico con preempt=full e threadirqs, PipeWire, Wine
+- **Periodo**: 06/2026 - en curso
 
-Este repositorio es un marcador de posición para notas sobre una configuración doméstica de grabación de audio, formación y mezcla, y por ahora no contiene prácticamente nada: el árbol de trabajo contiene solo el andamiaje estándar del proyecto y un único archivo de texto vacío bajo `_notes/` (cuyo propio nombre sugiere "razonamientos de electrónica analógica para música", pero el archivo todavía no tiene contenido). Las propias instrucciones del proyecto lo confirman directamente, describiéndolo como notas de configuración para un setup de home-recording/formación/mezcla que "todavía no se ha iniciado como código", con material manuscrito destinado a acumularse localmente y a permanecer sin seguimiento por git hasta que el proyecto madure.
+Repositorio de notas para un home studio de grabación y mezcla. El contenido técnico presente trata de la máquina de trabajo, un ordenador de sobremesa reconvertido con Ubuntu Studio 26.04: la instalación limpia, la configuración de baja latencia obtenida del kernel genérico con los parámetros de arranque `preempt=full` y `threadirqs`, la cadena de audio sobre PipeWire con el procedimiento para verificarla, la capa de compatibilidad Wine para los programas de Windows y el procedimiento de reinstalación y copia de seguridad con Veeam Agent for Linux. Este bloque es una copia sincronizada del proyecto hermano diy-2way-monitors-home, que usa la misma máquina.
 
-Todavía no hay nada que describir en términos de funcionalidad real, elecciones de herramientas o contenido de ingeniería de audio: ninguna documentación de la cadena de señal, ningún proyecto DAW, ninguna lista de equipo y ningún código. Se lee mejor como un esqueleto de repositorio deliberadamente mínimo, reservado para futuras notas sobre cómo montar un estudio doméstico, más que como un proyecto activo o siquiera en fase inicial.
+La decisión propia del proyecto sigue abierta: la elección de una interfaz de audio con más entradas para la grabación multipista, con los criterios fijados antes de comparar modelos, empezando por el número de entradas simultáneas y la conformidad con la clase de audio USB, que en Linux evita controladores y software de configuración propietarios. Todavía no hay una cadena de señal para la grabación, proyectos de DAW, una lista de equipo ni notas de mezcla.

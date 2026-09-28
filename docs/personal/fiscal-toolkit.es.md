@@ -1,13 +1,9 @@
 # fiscal-toolkit
 
-_Sin descripción en GitHub._
-
 - **Repositorio**: [alesop95/fiscal-toolkit](https://github.com/alesop95/fiscal-toolkit)
-- **Lenguajes**: -
-- **Fecha de inicio**: 2026-07
-- **Última actualización**: 2026-07-14
-- **Carpeta local**: `fiscal-toolkit`
+- **Tecnologías**: Node.js, TypeScript, SQLite (node:sqlite), Vitest
+- **Periodo**: 07/2026 - en curso
 
-## Del README
+Herramienta personal para entender la fiscalidad de un trabajador por cuenta ajena en Italia: del bruto anual (RAL) al neto, con el peso del IRPEF, las deducciones, la cuña fiscal, las cotizaciones al INPS y los recargos regionales y municipales. El cálculo es determinista y explicable: cada partida del resultado lleva el parámetro usado y la norma de la que procede. Los parámetros están en archivos versionados por año fiscal, actualizados a mano con cada Ley de Presupuestos, y se verifican contra el texto legal indexado por el proyecto legal-consultant.
 
-fiscal-toolkit e' uno strumento personale, non commerciale, pensato per orientarsi tra gli aspetti fiscali della retribuzione in Italia durante una ricerca di lavoro: stimare il netto a partire da una RAL, confrontare il lavoro dipendente con la partita IVA (regime forfettario o ordinario), e capire il peso del cuneo fiscale e delle detrazioni IRPEF su uno stipendio. E' nato il 10 luglio 2026 da una sessione di ricerca condotta nel repository del CV (`my-cv`), ed e' stato spostato qui come progetto a se stante, seguendo lo stesso pattern gia' adottato per altri repository personali collegati…
+Estado: el motor de cálculo para 2025 y 2026 está completo y cubierto por tests, con una CLI y una primera interfaz local que muestran la composición del salario y la comparación entre años. La comparación entre trabajo por cuenta ajena y autónomo (partita IVA) está prevista pero todavía no implementada. La fase siguiente, la lectura de documentos fiscales reales (Certificazione Unica, nóminas), no ha empezado. No es asesoramiento fiscal.

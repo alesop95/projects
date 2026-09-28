@@ -2,20 +2,20 @@
 
 **Settore**: azienda di servizi linguistici e traduzione professionale
 
-**Periodo**: 06/2026 - in corso
+**Periodo**: 05/2026 - in corso
 
 **Ruolo**: IT Manager, sistemista
 
-**Tecnologie**: Python, PowerShell, Microsoft 365 / Exchange Online, scheduled task di Windows, report in Excel
+**Tecnologie**: PowerShell, Microsoft Graph, Exchange Online PowerShell, applicazione registrata con autenticazione a certificato, Python, openpyxl, SQLite, Utilità di pianificazione di Windows
 
 ## Contesto
 
-Il monitoraggio dello stato delle caselle di posta aziendali (spazio occupato, soglie critiche, andamento nel tempo) veniva fatto a mano, senza un punto di raccolta storico su cui basare decisioni di capacity planning o allarmi tempestivi prima che una casella diventasse piena.
+Le caselle di posta aziendali si riempivano senza preavviso, e una casella principale piena smette di ricevere posta. Non esisteva uno storico dell'occupazione su cui valutare la crescita delle singole caselle.
 
 ## Cosa è stato fatto
 
-Toolkit di monitoraggio e reportistica eseguito periodicamente via scheduled task di Windows: uno script Python interroga lo stato delle caselle Exchange Online e genera alert quando una casella supera una soglia critica, un secondo script produce report e trend storici in Excel. Il layer di lancio ed esecuzione pianificata è in PowerShell. Credenziali e dati reali delle caselle restano esclusivamente locali, mai versionati.
+Uno script PowerShell eseguito ogni mattina da un'attività pianificata legge tutte le caselle tramite Microsoft Graph ed Exchange Online, raccoglie 22 metriche per ciascuna (occupazione e quota della casella principale e dell'archivio, crescita negli ultimi 30 giorni, inattività, inoltri automatici, blocchi legali) e le salva in un database SQLite che conserva lo storico senza scadenza. Lo stesso script calcola le soglie e invia gli avvisi. L'autenticazione usa un'applicazione registrata con certificato, quindi l'esecuzione non richiede accessi interattivi. Casella principale e archivio online sono trattati come due problemi distinti: al superamento dell'80% o del 95% il reparto IT riceve un riepilogo e il titolare della casella una notifica personale, con un testo diverso per ciascuna delle due soglie, mentre le caselle di sale e attrezzature sono escluse. Python ha un ruolo circoscritto: due script producono i report Excel giornalieri, separati fra caselle con licenza e caselle funzionali, e un report settimanale di trend.
 
 ## Risultato
 
-Alert automatico sulle caselle a rischio saturazione prima che diventino un problema operativo, e uno storico dei trend che prima non esisteva, utile per pianificare interventi di pulizia o ridimensionamento con anticipo invece che in emergenza.
+Il toolkit è in esercizio quotidiano da maggio 2026 e ha accumulato uno storico giornaliero dell'occupazione di tutte le caselle, con i report settimanali di trend generati in automatico.

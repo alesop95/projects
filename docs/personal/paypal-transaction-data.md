@@ -1,13 +1,9 @@
 # paypal-transaction-data
 
-_Nessuna descrizione su GitHub._
-
 - **Repository**: [alesop95/paypal-transaction-data](https://github.com/alesop95/paypal-transaction-data)
-- **Linguaggi**: Python, PowerShell, Shell, JavaScript
-- **Data di inizio**: 2026-06
-- **Ultimo aggiornamento**: 2026-07-06
-- **Cartella locale**: `paypal-transaction-data`
+- **Tecnologie**: Python, API REST di PayPal, Google Sheets, Excel
+- **Periodo**: 06/2026, fermo
 
-Uno strumento a riga di comando in Python che estrae lo storico delle transazioni dalla API REST di PayPal e lo sincronizza con un Google Sheet, mantenendo un registro continuo a scopo di contabilità. Estrae i campi rilevanti per la riconciliazione contabile, come identificativi di transazione e di riferimento, importi lordi e netti, commissioni, valuta, stato e dettagli del pagatore, e li scrive in un foglio formattato saltando i record già sincronizzati in precedenza. Esiste anche un percorso di esportazione separato verso Excel, accanto a quello per Google Sheets.
+Uno strumento Python a riga di comando che scarica lo storico delle transazioni dall'API REST di PayPal e lo sincronizza con un foglio Google, o in alternativa con un file Excel, per tenere un registro contabile senza copiare a mano gli estratti conto. Estrae i campi utili alla riconciliazione, cioè identificativi di transazione e di riferimento, importi lordi e netti, commissioni, valuta, stato e pagatore, e salta i record già sincronizzati.
 
-Lo strumento supporta sia la modalità sandbox sia quella live di PayPal e può essere eseguito come sincronizzazione una tantum, come sincronizzazione su un intervallo di date specifico, oppure come job pianificato a un intervallo configurabile, con un sottocomando di stato per verificare la connettività alla API. Le credenziali sia di PayPal sia di Google restano fuori dal controllo di versione tramite variabili d'ambiente e un file di credenziali OAuth. È un'utility personale di contabilità costruita per eliminare il lavoro manuale di copiare gli estratti conto PayPal in un foglio di calcolo, non un prodotto finanziario general-purpose: il repository contiene intenzionalmente solo il codice e le istruzioni di setup, non dati di transazione reali.
+Funziona in modalità sandbox e live, come sincronizzazione singola, su un intervallo di date o come job periodico, con un sottocomando che verifica la connessione all'API. Il repository contiene solo codice e istruzioni, nessun dato di transazione.

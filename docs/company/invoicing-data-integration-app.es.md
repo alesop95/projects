@@ -2,20 +2,20 @@
 
 **Sector**: empresa de servicios lingüísticos y traducción profesional
 
-**Periodo**: por confirmar
+**Periodo**: 11/2024 - en curso
 
-**Rol**: IT Manager, desarrollador full-stack
+**Rol**: IT Manager: traspaso, documentación y puesta en servicio en una máquina virtual
 
-**Tecnologías**: React, XML-RPC, integración con un sistema ERP/CRM de código abierto, parsing de datos estructurados
+**Tecnologías**: Next.js y React, Python con Flask, XML-RPC hacia un ERP de código abierto, procesamiento de archivos Excel, Ubuntu en máquina virtual
 
 ## Contexto
 
-Los datos de facturación de la empresa residen en un sistema ERP que expone una interfaz XML-RPC: se necesitaba una aplicación propia capaz de consultar ese sistema y extraer los datos de facturación en un formato utilizable por otros procesos internos, con un entorno de pruebas separado del de producción.
+Para un gran cliente, la facturación mensual requiere un informe que el ERP no produce por sí solo: los datos que pide el cliente, es decir, cantidades y tarifas de cada pedido, están en las líneas de los pedidos y no en la cabecera, y reconstruirlos a mano cada mes era lento y propenso a errores.
 
 ## Qué se hizo
 
-Aplicación React que se comunica vía XML-RPC con un sistema ERP/CRM de código abierto para extraer los datos de facturación, con un parsing avanzado para normalizar e interpretar los datos estructurados devueltos por el sistema. Adopta un flujo de gestión de pruebas/producción con su propia filosofía de promoción de cambios desde el entorno de desarrollo hasta producción, distinta de la de otros proyectos internos.
+La aplicación la desarrolló un antiguo compañero; yo me hice cargo de ella, la documenté paso a paso y la puse en servicio en una máquina virtual interna, cuando antes funcionaba en un solo puesto de trabajo. El frontend Next.js y el backend Python Flask reciben el resumen mensual que el cliente envía en Excel, leen del ERP por XML-RPC las líneas de pedido correspondientes y devuelven el informe completo del que parte la facturación.
 
 ## Resultado
 
-Una capa de integración dedicada entre el sistema ERP y los procesos que consumen los datos de facturación, con un entorno de pruebas aislado que permite validar los cambios antes de su publicación.
+La rendición de cuentas mensual para el cliente es un procedimiento de subida y descarga en lugar de una reconstrucción manual, y ya no depende del ordenador de una sola persona.

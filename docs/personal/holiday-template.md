@@ -3,11 +3,9 @@
 A free-customized interactive holiday tracker
 
 - **Repository**: [alesop95/holiday-template](https://github.com/alesop95/holiday-template)
-- **Linguaggi**: JavaScript, Python, HTML, PowerShell
-- **Data di inizio**: 2026-06
-- **Ultimo aggiornamento**: 2026-07-14
-- **Cartella locale**: `holiday-template`
+- **Tecnologie**: JavaScript (moduli ES), Firebase Firestore e Hosting, Leaflet, Python, FastAPI
+- **Periodo**: 06/2026 - in corso
 
-Un template riutilizzabile per costruire progressive web app di pianificazione viaggi condivisa, nato da un progetto reale di vacanza di coppia (un viaggio nel Cilento del 2026 vive sotto `trips/` come prima istanza). Il design separa deliberatamente uno shell HTML/JS canonico, che gestisce rendering, stato e collegamento a Firebase e non viene mai modificato per singolo viaggio, da un unico file `trip.config.js` per viaggio che contiene itinerario, lista ristoranti, marker sulla mappa e checklist. Ogni nuova vacanza si crea copiando lo shell in una nuova cartella sotto `trips/` e scrivendo solo quel file di configurazione, mentre tutti i viaggi condividono un unico progetto Firebase e sono separati in Firestore tramite un prefisso `TRIP_ID`, così la sincronizzazione in tempo reale della checklist tra i dispositivi di due persone continua a funzionare senza bisogno di configurare un backend per ogni viaggio.
+Template per costruire progressive web app di pianificazione di viaggi condivisa fra due persone. Una shell HTML e JavaScript unica, divisa in moduli ES, gestisce rendering, stato e sincronizzazione con Firebase e non si modifica mai; ogni viaggio ha una propria cartella sotto `trips/` con un solo file di configurazione per itinerario, ristoranti, marker sulla mappa e checklist. Tutti i viaggi condividono un progetto Firebase e sono separati in Firestore da un identificativo, così la checklist si sincronizza in tempo reale fra i due dispositivi senza un backend per viaggio. Ogni scheda si stampa in PDF.
 
-Oltre al planner statico, il repository contiene anche `services/flight-search`, un piccolo servizio FastAPI documentato esplicitamente come uno scaffold iniziale piuttosto che una funzionalità completa: espone un unico endpoint di ricerca appoggiato a due adapter per i dati sui voli (uno scraper di Google Flights via `fast-flights` e le API Kiwi Tequila), senza ancora alcun livello di caching. Le note del progetto registrano che un terzo adapter, costruito sulle API Amadeus, era stato scritto, testato e poi rimosso deliberatamente dopo che Amadeus ha annunciato la chiusura del proprio portale sviluppatori self-service.
+Accanto al planner ci sono quattro servizi FastAPI, per ora solo locali: ricerca voli (scraping di Google Flights), ricerca alloggi, punti di interesse da OpenStreetMap e un servizio che li combina in un'unica risposta, chiamato dalla shell in una scheda di pianificazione. Due fonti di dati sui voli, Amadeus e Kiwi Tequila, sono state integrate e poi rimosse quando hanno chiuso l'accesso self-service. Il lavoro è in corso: la pubblicazione dei servizi non è ancora fatta.

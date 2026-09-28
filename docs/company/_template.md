@@ -27,7 +27,7 @@ Descrizione del problema/esigenza di business che ha originato il progetto, in t
 
 ## Cosa e' stato fatto
 
-Descrizione tecnica del lavoro svolto: architettura, decisioni prese, difficolta' affrontate.
+Descrizione tecnica del lavoro svolto: architettura, decisioni prese, difficoltà affrontate.
 
 ## Risultato
 

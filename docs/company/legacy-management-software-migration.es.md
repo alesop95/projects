@@ -1,21 +1,21 @@
-# Migración de un software de gestión legacy a un sistema operativo con soporte
+# Migración de un software de gestión heredado a un sistema operativo con soporte
 
 **Sector**: empresa de servicios lingüísticos y traducción profesional
 
-**Periodo**: por confirmar (duración: algunos meses)
+**Periodo**: 02/2026 - en curso
 
 **Rol**: IT Manager, administrador de sistemas
 
-**Tecnologías**: Ubuntu 10 → Ubuntu 24.04 LTS, parches de aplicaciones, gestión de usuarios en red LAN
+**Tecnologías**: Ubuntu 10.04 LTS → Ubuntu 24.04 LTS, Docker, contenedores separados para producción y pruebas, base de datos relacional, Proxmox VE
 
 ## Contexto
 
-Un software de gestión legacy de la empresa, que databa de mediados de la década de 2000, seguía ejecutándose en una distribución Linux sin soporte ni actualizaciones de seguridad desde hacía tiempo, con un riesgo creciente de incompatibilidades y vulnerabilidades sin resolver.
+El software de gestión que la empresa usó para el trabajo diario hasta 2021, una aplicación web de mediados de los años 2000, hoy sirve como archivo: se consulta internamente para los datos históricos. Funcionaba en un servidor Ubuntu 10.04 LTS, una distribución sin soporte desde hace muchos años, dentro de la infraestructura virtualizada de la empresa.
 
 ## Qué se hizo
 
-Migración, con una duración de algunos meses, del software de gestión legacy de Ubuntu 10 a Ubuntu 24.04 LTS, con la restauración 1:1 de todos los parches de aplicaciones necesarios para mantener la compatibilidad con los usuarios específicos de la red LAN que dependen del software, documentada en detalle para referencia futura.
+El software se reconstruyó en una nueva máquina virtual Ubuntu 24.04 LTS en la infraestructura Proxmox, con la aplicación y su base de datos en contenedores. En la misma máquina funcionan dos instancias independientes, una de producción y otra de pruebas, cada una con su propia base de datos, para que los cambios se prueben antes de tocar el archivo que consultan los usuarios. La migración la dirigió el IT Manager, con la contribución del equipo.
 
 ## Resultado
 
-Un software de gestión crítico para la actividad de la empresa llevado a un sistema operativo con soporte y con posibilidad de aplicar parches, eliminando el riesgo acumulado de funcionar en una distribución fuera de soporte (end-of-life), sin pérdida de funcionalidad para los usuarios finales.
+Los datos históricos se pueden consultar desde una instancia que funciona sobre un sistema operativo con soporte, con un entorno de pruebas separado del de producción. El trabajo sigue en curso: el servidor antiguo sigue encendido y su desmantelamiento está pendiente.

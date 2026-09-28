@@ -1,23 +1,23 @@
 # Internal generative artificial intelligence platform
 
-!!! tip "Flagship project, continuously evolving" The most significant among the internal projects described in this section, under active development: it touches on generative AI, dedicated GPU infrastructure, agent orchestration and integration with the company identity system. This page will be expanded further once the work stabilizes.
-
 **Sector**: language services and professional translation company
 
-**Period**: to be confirmed - ongoing
+**Period**: 03/2025 - ongoing
 
 **Role**: IT Manager, full-stack developer, R&D
 
-**Technologies**: Ollama (self-hosted LLM on dedicated GPU), RAG (retrieval-augmented generation), Qdrant (vector database), n8n (agentic AI workflow orchestration), company SSO authentication, reverse proxy on protected LAN, Model Context Protocol (MCP), proprietary frontend
+**Technologies**: Ollama with open-source models on a dedicated GPU, RAG with Qdrant and bge-m3 embeddings, n8n for workflow orchestration, Node.js backend, React frontend, Nginx as reverse proxy, Docker Compose, authentication through the company identity provider (SSO), Model Context Protocol (MCP) in the test environment
 
 ## Context
 
-The company wanted an internal conversational assistant based on generative artificial intelligence, with access to the company's document context, without depending on third-party cloud services for every interaction and with full control over data and infrastructure. There was also a need for a way to extend the assistant's capabilities with custom tools, rather than being limited to a simple chat interface.
+The company wanted an internal assistant able to answer questions on company documentation without sending the documents to external artificial intelligence services, on hardware it already had. The technical question was whether a single GPU on a repurposed machine could serve a business application with acceptable response times.
 
 ## What was done
 
-Internal generative AI platform built around Ollama as a self-hosted inference engine on dedicated GPU hardware, with R&D benchmarks and tests to validate model and hardware choices. A RAG system with Qdrant as the vector database supplies the company's document context to the model. AI agents orchestrate custom workflows through n8n, with the ability to compose different workflows depending on the profile of the person accessing the system. Access happens through the same company identity system (SSO) used for other services, so that the assistant recognizes the user and applies the appropriate context. The frontend was written from scratch with the company's visual identity, and also acts as an MCP (Model Context Protocol) client on the internal network toward custom MCP servers, both centralized and distributed across individual endpoints. The infrastructure is exposed on the internal network through a protected reverse proxy, with separate test and production environments.
+The first version, started in 2025, used n8n, a local vector database and a model running on CPU, with high latency on the larger models. In 2026 the application was rewritten with a Node.js backend, a React frontend and Qdrant as the vector database, in containers behind a reverse proxy, with inference handled by Ollama on a separate host on the internal network with a dedicated GPU. The flow in production is a RAG chat: the question is turned into an embedding, Qdrant returns the relevant passages and an n8n agent generates the answer with that context; a second flow indexes the PDFs uploaded by administrators. Access goes through the company identity provider.
+
+A separate test environment, not in service today, contains an MCP server that exposes tools filtered by department, intended for a first use case in drafting sales emails; it is not part of the production stack. In parallel, a benchmark was run between CPU and GPU and across models of different sizes, and a whitepaper on it is in preparation.
 
 ## Result
 
-An internal AI assistant customized to the company's context, with data and inference under the company's direct control instead of being entirely entrusted to third-party cloud services, and an extensible architecture that allows new tools and flows to be added without having to rewrite the frontend.
+The chat over company documents is in production, with inference and the document store on the internal network; authentication, on the other hand, goes through an external identity service. Extending the assistant with tools through MCP is still at the testing stage, and the benchmark results will be published with the whitepaper.

@@ -1,13 +1,9 @@
 # my-wedding-day
 
-Customized wedding planner app
+- **Repository**: private, not browsable
+- **Technologies**: React 18, TypeScript, Firebase (Firestore, Authentication, Cloud Functions, Hosting)
+- **Period**: 04/2026 - ongoing
 
-- **Repository**: [alesop95/my-wedding-day](https://github.com/alesop95/my-wedding-day)
-- **Languages**: TypeScript, PowerShell, Shell, Python
-- **Start date**: 2026-04
-- **Last updated**: 2026-07-13
-- **Local folder**: `my-wedding-day`
+A web application for organizing a real wedding, from guests' RSVPs to the evening itself. It is a single page application in React 18 and TypeScript with an all-Firebase backend (Firestore, Authentication, Cloud Functions, Hosting) and no server of its own. Guests sign in with personal credentials and find the RSVP, logistics information, the program, the gift registry, the guestbook, song proposals for the music setlist and photo sharing. An admin panel manages families and guests, table seating, the menu, vendors and content moderation, and the venue staff, the band and the photographer each have a dedicated view.
 
-A React 18 and TypeScript single-page application built to run an actual wedding's guest-facing logistics, deployed as a static site on Firebase Hosting backed by Firestore and Cloud Functions rather than a custom server. Guests move through dedicated sections for RSVP, hotel and venue information, the evening program, a gift registry, a collaborative guestbook, photo sharing, and a playlist/song-suggestion feature that integrates with the Spotify API through a dedicated OAuth setup script. A password-gated admin area, separate from the guest-facing app, covers guest-list management with family grouping, restaurant table/seating assignment, menu editing, moderation of guestbook entries and song suggestions, vendor tracking, and a reporting view, while Cloud Functions handle server-side concerns such as staff authentication, scheduled RSVP email reminders, and guest-record cleanup and migration scripts.
-
-Technically the app favors an atom-based state model with Jotai over Redux or Context, fp-ts for Option/Either-style error handling, and Framer Motion plus Lottie for the animated header and transitions; email templates are authored in MJML and compiled to TypeScript at build time rather than rendered at runtime. The project's own documentation fixes this stack deliberately (explicitly ruling out Next.js, Redux, Tailwind and similar alternatives), indicating a considered, from-scratch build rather than a quickly scaffolded demo, even though its scope is a single real-world event rather than a reusable product.
+Every session starts from a login Cloud Function that checks the credentials server-side and returns a token carrying the role, which Firestore security rules read. State is handled with Jotai, errors with fp-ts, emails are MJML templates compiled at build time, and the interface is in Italian and English. The project has a four-job CI pipeline, end-to-end tests with Playwright on Firebase emulators, Sentry monitoring, rate limiting and App Check. The code is private because it contains real data, and a public repository with only the technical documentation, cleaned of personal data, is planned.

@@ -6,7 +6,7 @@
 
 Corso di formazione con [Openforce Pedaso](https://www.openforce.it/).
 
-## Altri seminari audio
+## Seminari audio
 
 - [Klippel](https://www.klippel.de/fileadmin/klippel/Files/News/VIRTUAL%20LECTURE%202022.pdf)
 - [Masterclass](https://drive.proton.me/urls/JSZYEDPC3G#K4VKQjfLAbIa)

@@ -3,11 +3,9 @@
 Just a personal project to update my collection
 
 - **Repositorio**: [alesop95/pok-collecting_update_collection](https://github.com/alesop95/pok-collecting_update_collection)
-- **Lenguajes**: Python, PowerShell, Shell, JavaScript
-- **Fecha de inicio**: 2026-05
-- **Última actualización**: 2026-07-06
-- **Carpeta local**: `pok-collecting_update_collection`
+- **Tecnologías**: Python, xlwings, openpyxl, SQLite, API REST di CardTrader
+- **Periodo**: 05/2026 - 06/2026, en pausa
 
-Un compañero de seguimiento de precios para una colección personal de cartas Pokémon TCG guardada en un libro de Excel. En lugar de sustituir la hoja de cálculo, el script la trata como fuente de verdad: lee qué cartas se poseen directamente del libro mediante automatización COM (xlwings), obtiene los precios de mercado actuales desde la API REST de CardTrader v2, y escribe una caché de búsqueda además de fórmulas listas para pegar, de modo que Excel pueda mostrar precios actualizados mediante búsquedas al estilo XLOOKUP. Una base de datos SQLite mantiene un historial de precios de solo adición, para que las tendencias no se pierdan entre ejecuciones.
+Un complemento de seguimiento de precios para una colección personal de cartas Pokémon TCG guardada en un libro de Excel. El script trata la hoja de cálculo como fuente de verdad: lee las cartas que se poseen directamente del libro mediante automatización COM (xlwings), obtiene los precios de mercado actuales desde la API REST de CardTrader v2 y escribe una caché de búsqueda con fórmulas listas para pegar, de modo que Excel muestre precios actualizados mediante búsquedas al estilo XLOOKUP. Una base de datos SQLite guarda un historial de precios de solo adición, para que las tendencias no se pierdan entre una ejecución y otra.
 
-Se construyó después de que Cardmarket cerrara su API pública de precios en 2024, lo que obligó a cambiar a CardTrader como única fuente de datos restante. Un script de descubrimiento hace un fuzzy-matching entre los nombres de las hojas del libro y el catálogo de expansiones de la API, para generar el mapeo hoja-expansión inicial, ya que los nombres de las hojas de Excel no coinciden de forma limpia con los identificadores de la API. Las fórmulas de búsqueda generadas se producen en sintaxis de Excel en italiano (separadas por punto y coma, con nombres de función localizados), un detalle que refleja la naturaleza de un solo usuario y una sola configuración regional de la herramienta, más que cualquier intento de portabilidad.
+Nació tras el cierre de la API pública de precios de Cardmarket, hacia 2024 según la documentación del proyecto, que dejó CardTrader como fuente de datos. Un script de descubrimiento asocia por fuzzy matching los nombres de las hojas del libro con el catálogo de expansiones de la API, porque los nombres de las hojas no coinciden con los identificadores de la API. Las fórmulas de búsqueda se generan en sintaxis de Excel en italiano, con el punto y coma como separador y los nombres de función localizados.

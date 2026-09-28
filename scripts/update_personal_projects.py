@@ -16,24 +16,26 @@ Cosa fa, in ordine:
    "non ancora pronto", vedi .claude/context/roadmap.md di my-cv).
 2. Per ciascuna cartella rimasta, se e' un repository git con remote "origin" su github.com,
    estrae owner/repo dall'URL (gestisce sia HTTPS sia SSH, incluso l'alias "github-personal").
-3. Per ciascun repository trovato, interroga l'API REST di GitHub (nessuna scrittura, solo
-   lettura di dati gia' pubblici) per metadati, la ripartizione dei linguaggi (endpoint
-   /languages, non solo il singolo linguaggio dominante di /repos) e un estratto del README.
-   Legge anche la data del primo commit locale (git log sulla cartella sotto --source) come
-   approssimazione della data di inizio del progetto: richiesta esplicita dell'utente
-   (2026-07-09), a differenza dei progetti aziendali dove questa euristica si e' rivelata
-   inaffidabile (vedi ARCHITECTURE.md) e le date restano corrette a mano.
-4. Genera tre pagine Markdown per progetto (docs/personal/<slug>.md per l'italiano,
+3. Per ciascun repository trovato, interroga l'API REST di GitHub (nessuna scrittura) per i
+   metadati e un estratto del README. Un repository privato non si pubblica mai per caso: con un
+   token l'API restituisce anche i privati, quindi si guarda il campo private, e la pagina di un
+   privato esiste solo se data/personal_meta.json lo dichiara con "privato": true, nel qual caso
+   esce senza collegamento e senza nulla preso dal repository.
+4. Tecnologie, periodo, stato e descrizione breve nelle tre lingue si leggono da
+   data/personal_meta.json, scritto a mano. Fino al 2026-09-24 si ricavavano da GitHub e da git,
+   e misuravano la cosa sbagliata: i linguaggi contavano gli strumenti del template propagati in
+   ogni repository, le date erano quelle di caricamento o di propagazione e non quelle del lavoro.
+5. Genera tre pagine Markdown per progetto (docs/personal/<slug>.md per l'italiano,
    <slug>.en.md per l'inglese, <slug>.es.md per lo spagnolo, secondo la struttura a suffisso di
    mkdocs-static-i18n) e rigenera i tre index.md/index.en.md/index.es.md con la tabella
    riassuntiva nella lingua corrispondente. Non tocca docs/company/.
-5. Se esiste data/personal_overrides/<slug>.<lang>.md, il suo contenuto sostituisce l'estratto
-   README nella pagina generata di quella lingua: e' li' che vive il testo lungo scritto a mano
-   (o da un agente a partire dal codice reale), perche' sopravviva alle rigenerazioni di questo
-   script. Se manca la traduzione in una lingua, si ripiega sulla versione inglese (la lingua in
-   cui questi override sono stati scritti per la prima volta) invece di lasciare la pagina vuota.
-   La descrizione breve e i topics, che arrivano da GitHub, non vengono tradotti: sono citazioni
-   dirette di un campo esterno, non prosa di questo sito.
+6. Se esiste data/personal_overrides/<slug>.<lang>.md, il suo contenuto sostituisce l'estratto
+   README nella pagina generata di quella lingua: è lì che vive il testo lungo, perché sopravviva
+   alle rigenerazioni di questo script. Se manca la traduzione in una lingua, si ripiega sulla
+   versione inglese invece di lasciare la pagina vuota.
+
+Le correzioni al contenuto delle pagine personali si fanno quindi in data/personal_meta.json e in
+data/personal_overrides/, mai in docs/personal/, che questo script sovrascrive.
 
 Non modifica nulla sotto E:\\: e' un'operazione di sola lettura sui progetti locali, in scrittura
 solo sui file di questo sito (docs/personal/).
@@ -49,7 +51,7 @@ import urllib.request
 from pathlib import Path
 
 EXCLUDE_NAMES = {
-    "my-cv", "skills", "projects", "template-claude-developing", "lettore-doc", "prova",
+    "my-cv", "skills", "projects", "prova",
     "windows-status",  # tooling di sistema, non un "progetto" da vetrina
     "$RECYCLE.BIN", "System Volume Information", ".pnpm-store", ".claude",
 }
@@ -72,6 +74,8 @@ PROJECT_CATEGORIES = {
     "rodrainaudio-reverse-eng": "audio_music",
     # Agenti AI e strumenti local-first: orchestrazione LLM/agenti, architetture offline-first.
     "legal-consultant": "ai_agents",
+    "lettore-doc": "ai_agents",
+    "template-claude-developing": "ai_agents",
     "local-audio-transcriptor": "ai_agents",
     "spanish-learning": "ai_agents",
     # Sicurezza e infrastruttura self-hosted.
@@ -81,6 +85,7 @@ PROJECT_CATEGORIES = {
     # Finanza personale e automazione trading.
     "fiscal-toolkit": "finance_trading",
     "paypal-transaction-data": "finance_trading",
+    "real-estate": "finance_trading",
     "trader-bot": "finance_trading",
     # Hardware, embedded e personalizzazione dispositivi.
     "analog-to-digital-vhs-converter": "hardware_embedded",
@@ -90,6 +95,7 @@ PROJECT_CATEGORIES = {
     "crosswords": "games_hobbies",
     "pok-collecting-update-collection": "games_hobbies",
     "pok-competitive-teambuilder": "games_hobbies",
+    "retrogame-mod-pok-dev": "games_hobbies",
     "totocalcio": "games_hobbies",
     # App personali e bot: strumenti/webapp per un evento o un uso personale specifico.
     "app-cross-training": "personal_apps",
@@ -119,6 +125,12 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 PERSONAL_DIR = REPO_ROOT / "docs" / "personal"
 OVERRIDES_DIR = REPO_ROOT / "data" / "personal_overrides"
+# Campi scritti a mano per ogni progetto: tecnologie, periodo, stato, descrizione breve nelle tre
+# lingue, e se il repository e' privato. Sostituiscono i campi che prima si ricavavano da GitHub
+# e da git, che misuravano la cosa sbagliata: i linguaggi contavano gli strumenti del template
+# propagati in ogni repository, e le date erano quelle di caricamento o di propagazione, non
+# quelle del lavoro (passata di revisione del 2026-09-24).
+META_PATH = REPO_ROOT / "data" / "personal_meta.json"
 
 LANGS = ("it", "en", "es")
 # "it" e' la lingua di default nella struttura a suffisso di mkdocs-static-i18n: i suoi file
@@ -127,26 +139,27 @@ LANG_SUFFIX = {"it": "", "en": ".en", "es": ".es"}
 
 LABELS = {
     "it": {
-        "no_description": "_Nessuna descrizione su GitHub._",
         "fork_note": "personalizzazione/estensione, non codebase originale",
         "fork_of": "Fork di",
         "repository": "Repository",
-        "languages": "Linguaggi",
+        "technologies": "Tecnologie",
         "topics": "Topics",
-        "start_date": "Data di inizio",
-        "updated": "Ultimo aggiornamento",
-        "local_folder": "Cartella locale",
+        "period": "Periodo",
+        "private_repo": "privato, non consultabile",
+        "state_in_corso": "in corso",
+        "state_fermo": "fermo",
+        "state_concluso": "concluso",
+        "state_sospeso": "sospeso",
         "from_readme": "Dal README",
         "index_title": "Personal projects",
         "index_intro": (
-            "Generata automaticamente da `scripts/update_personal_projects.py` a partire dai "
-            "repository GitHub pubblici collegati alle cartelle progetto locali. Non modificare "
-            "questo file a mano: verra' sovrascritto alla prossima esecuzione dello script."
+            "I progetti personali, raggruppati per area. Per ciascuno la pagina riporta "
+            "tecnologie, periodo e stato, e il collegamento al repository quando è pubblico."
         ),
         "col_project": "Progetto",
         "col_description": "Descrizione",
-        "col_language": "Linguaggi",
-        "col_updated": "Aggiornato",
+        "col_technologies": "Tecnologie",
+        "col_period": "Periodo",
         "cat_audio_music": "Audio ed elaborazione musicale",
         "cat_ai_agents": "Agenti AI e strumenti local-first",
         "cat_security_infra": "Sicurezza e infrastruttura self-hosted",
@@ -157,26 +170,27 @@ LABELS = {
         "cat_uncategorized": "Da categorizzare",
     },
     "en": {
-        "no_description": "_No description on GitHub._",
         "fork_note": "customization/extension, not the original codebase",
         "fork_of": "Fork of",
         "repository": "Repository",
-        "languages": "Languages",
+        "technologies": "Technologies",
         "topics": "Topics",
-        "start_date": "Start date",
-        "updated": "Last updated",
-        "local_folder": "Local folder",
+        "period": "Period",
+        "private_repo": "private, not browsable",
+        "state_in_corso": "ongoing",
+        "state_fermo": "paused",
+        "state_concluso": "completed",
+        "state_sospeso": "on hold",
         "from_readme": "From the README",
         "index_title": "Personal projects",
         "index_intro": (
-            "Automatically generated by `scripts/update_personal_projects.py` from the public "
-            "GitHub repositories linked to the local project folders. Do not edit this file by "
-            "hand: it gets overwritten on the next run of the script."
+            "Personal projects, grouped by area. Each page lists technologies, period and "
+            "status, and links the repository when it is public."
         ),
         "col_project": "Project",
         "col_description": "Description",
-        "col_language": "Languages",
-        "col_updated": "Updated",
+        "col_technologies": "Technologies",
+        "col_period": "Period",
         "cat_audio_music": "Audio & music engineering",
         "cat_ai_agents": "AI agents & local-first tools",
         "cat_security_infra": "Security & self-hosted infrastructure",
@@ -187,26 +201,27 @@ LABELS = {
         "cat_uncategorized": "Uncategorized",
     },
     "es": {
-        "no_description": "_Sin descripción en GitHub._",
         "fork_note": "personalización/extensión, no el código original",
         "fork_of": "Fork de",
         "repository": "Repositorio",
-        "languages": "Lenguajes",
+        "technologies": "Tecnologías",
         "topics": "Topics",
-        "start_date": "Fecha de inicio",
-        "updated": "Última actualización",
-        "local_folder": "Carpeta local",
+        "period": "Periodo",
+        "private_repo": "privado, no consultable",
+        "state_in_corso": "en curso",
+        "state_fermo": "en pausa",
+        "state_concluso": "finalizado",
+        "state_sospeso": "suspendido",
         "from_readme": "Del README",
         "index_title": "Personal projects",
         "index_intro": (
-            "Generada automáticamente por `scripts/update_personal_projects.py` a partir de los "
-            "repositorios públicos de GitHub asociados a las carpetas de proyecto locales. No "
-            "modificar este archivo a mano: se sobrescribe en la siguiente ejecución del script."
+            "Proyectos personales, agrupados por área. Cada página indica tecnologías, periodo "
+            "y estado, y enlaza el repositorio cuando es público."
         ),
         "col_project": "Proyecto",
         "col_description": "Descripción",
-        "col_language": "Lenguajes",
-        "col_updated": "Actualizado",
+        "col_technologies": "Tecnologías",
+        "col_period": "Periodo",
         "cat_audio_music": "Ingeniería de audio y música",
         "cat_ai_agents": "Agentes de IA y herramientas local-first",
         "cat_security_infra": "Seguridad e infraestructura autoalojada",
@@ -286,39 +301,35 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
-def format_languages(languages, max_count=4):
-    """languages e' il dict {nome: byte} dell'endpoint /repos/{owner}/{repo}/languages.
-    A differenza del singolo 'language' dominante di /repos, questo riflette davvero tutti i
-    linguaggi usati: restituisce i primi max_count per byte, separati da virgola."""
-    if not languages:
-        return None
-    ranked = sorted(languages.items(), key=lambda kv: kv[1], reverse=True)
-    return ", ".join(name for name, _ in ranked[:max_count])
+def load_meta():
+    if not META_PATH.exists():
+        return {}
+    data = json.loads(META_PATH.read_text(encoding="utf-8"))
+    return {k: v for k, v in data.items() if not k.startswith("_")}
 
 
-def git_first_commit_date(folder):
-    """Approssima la data di inizio del progetto con la data del primo commit locale. Richiesta
-    esplicita dell'utente per i progetti personali (2026-07-09): a differenza dei progetti
-    aziendali, dove questa euristica si e' rivelata inaffidabile (il tracciamento git spesso
-    inizia molto dopo il lavoro reale, vedi ARCHITECTURE.md), per i repository personali il primo
-    commit e' in genere anche l'inizio effettivo del progetto."""
-    try:
-        roots = subprocess.run(
-            ["git", "-C", str(folder), "rev-list", "--max-parents=0", "HEAD"],
-            capture_output=True, text=True, timeout=10,
-        )
-        if roots.returncode != 0 or not roots.stdout.strip():
-            return None
-        root_hash = roots.stdout.strip().splitlines()[0]
-        date_result = subprocess.run(
-            ["git", "-C", str(folder), "log", "-1", "--format=%ad", "--date=format:%Y-%m", root_hash],
-            capture_output=True, text=True, timeout=10,
-        )
-        if date_result.returncode != 0:
-            return None
-        return date_result.stdout.strip() or None
-    except (subprocess.TimeoutExpired, OSError):
+def format_month(value):
+    """'2026-06' -> '06/2026'; '2019' resta '2019'."""
+    if not value:
         return None
+    parts = value.split("-")
+    return f"{parts[1]}/{parts[0]}" if len(parts) == 2 else value
+
+
+def format_period(lang, entry):
+    """Periodo leggibile dai campi inizio, fine e stato di data/personal_meta.json."""
+    if not entry or not entry.get("inizio"):
+        return None
+    labels = LABELS[lang]
+    start = format_month(entry["inizio"])
+    end = format_month(entry.get("fine"))
+    state = entry.get("stato")
+    if state == "in_corso" and not end:
+        return f"{start} - {labels['state_in_corso']}"
+    text = start if not end or end == start else f"{start} - {end}"
+    if state and state != "in_corso":
+        text += f", {labels['state_' + state]}"
+    return text
 
 
 def load_override(slug, lang):
@@ -335,9 +346,10 @@ def load_override(slug, lang):
     return None
 
 
-def build_project_page(lang, folder_name, owner, repo, meta, languages_str, start_date, readme_excerpt, override_text):
+def build_project_page(lang, title, owner, repo, meta, entry, readme_excerpt, override_text):
     labels = LABELS[lang]
-    lines = [f"# {meta.get('name', repo)}", ""]
+    entry = entry or {}
+    lines = [f"# {title}", ""]
     if meta.get("fork"):
         parent = meta.get("parent", {})
         parent_full = parent.get("full_name", "sconosciuto")
@@ -345,19 +357,21 @@ def build_project_page(lang, folder_name, owner, repo, meta, languages_str, star
             f"> {labels['fork_of']} [{parent_full}](https://github.com/{parent_full}): {labels['fork_note']}."
         )
         lines.append("")
-    description = meta.get("description") or labels["no_description"]
-    lines.append(description)
-    lines.append("")
-    lines.append(f"- **{labels['repository']}**: [{owner}/{repo}]({meta.get('html_url')})")
-    if languages_str:
-        lines.append(f"- **{labels['languages']}**: {languages_str}")
+    description = (entry.get("descrizione") or {}).get(lang) or meta.get("description")
+    if description:
+        lines.append(description)
+        lines.append("")
+    if entry.get("privato"):
+        lines.append(f"- **{labels['repository']}**: {labels['private_repo']}")
+    else:
+        lines.append(f"- **{labels['repository']}**: [{owner}/{repo}]({meta.get('html_url')})")
+    if entry.get("tecnologie"):
+        lines.append(f"- **{labels['technologies']}**: {entry['tecnologie']}")
     if meta.get("topics"):
         lines.append(f"- **{labels['topics']}**: {', '.join(meta['topics'])}")
-    if start_date:
-        lines.append(f"- **{labels['start_date']}**: {start_date}")
-    if meta.get("pushed_at"):
-        lines.append(f"- **{labels['updated']}**: {meta['pushed_at'][:10]}")
-    lines.append(f"- **{labels['local_folder']}**: `{folder_name}`")
+    period = format_period(lang, entry)
+    if period:
+        lines.append(f"- **{labels['period']}**: {period}")
     lines.append("")
     if override_text:
         lines.append(override_text)
@@ -415,44 +429,53 @@ def main():
 
     index_rows = []
     generated_files = set()
+    metas = load_meta()
 
     for folder_name, owner, repo in projects:
-        meta = github_request(f"{API_ROOT}/repos/{owner}/{repo}", args.token)
-        if meta is None:
-            print(f"  SKIP  {folder_name} -> {owner}/{repo} (non trovato su GitHub, forse privato)")
-            continue
-        default_branch = meta.get("default_branch", "main")
-        readme_raw = github_raw(f"https://raw.githubusercontent.com/{owner}/{repo}/{default_branch}/README.md")
-        excerpt = extract_readme_excerpt(readme_raw)
-        languages = github_request(f"{API_ROOT}/repos/{owner}/{repo}/languages", args.token)
-        languages_str = format_languages(languages) or meta.get("language") or "-"
-        start_date = git_first_commit_date(Path(args.source) / folder_name)
-
         slug = slugify(repo)
+        entry = metas.get(slug)
+        if entry is None:
+            print(f"  WARN  {slug} manca in data/personal_meta.json: tecnologie, periodo e stato non compariranno.", file=sys.stderr)
+        meta = github_request(f"{API_ROOT}/repos/{owner}/{repo}", args.token)
+        # Un repository privato non si pubblica per caso. Con un token l'API restituisce anche i
+        # privati, quindi "trovato" non vuol dire "pubblico": si guarda il campo private. La pagina
+        # di un privato esiste solo se personal_meta.json lo dichiara con privato: true, e in quel
+        # caso esce senza collegamento e senza nulla preso dal repository.
+        is_private = meta is None or bool(meta.get("private"))
+        if is_private and not (entry and entry.get("privato")):
+            print(f"  SKIP  {folder_name} -> {owner}/{repo} (privato o non trovato, e non dichiarato privato in personal_meta.json)")
+            continue
+        if is_private:
+            meta, excerpt = {}, None
+        else:
+            default_branch = meta.get("default_branch", "main")
+            readme_raw = github_raw(f"https://raw.githubusercontent.com/{owner}/{repo}/{default_branch}/README.md")
+            excerpt = extract_readme_excerpt(readme_raw)
+        title = (entry or {}).get("titolo") or meta.get("name") or repo
+
         for lang in LANGS:
             override_text = load_override(slug, lang)
             page_path = PERSONAL_DIR / f"{slug}{LANG_SUFFIX[lang]}.md"
             page_path.write_text(
-                build_project_page(lang, folder_name, owner, repo, meta, languages_str, start_date, excerpt, override_text),
+                build_project_page(lang, title, owner, repo, meta, entry, excerpt, override_text),
                 encoding="utf-8",
             )
             generated_files.add(page_path.name)
-        print(f"  OK    {folder_name} -> {slug}.md (it/en/es)")
+        print(f"  OK    {folder_name} -> {slug}.md (it/en/es){' [privato]' if is_private else ''}")
 
         category = PROJECT_CATEGORIES.get(slug)
         if category is None:
             category = "uncategorized"
             print(
-                f"  WARN  {slug} non e' presente in PROJECT_CATEGORIES: assegnato a "
+                f"  WARN  {slug} non è presente in PROJECT_CATEGORIES: assegnato a "
                 f"'uncategorized', aggiungere la voce nello script.",
                 file=sys.stderr,
             )
         index_rows.append({
-            "title": meta.get("name", repo),
+            "title": title,
             "slug": slug,
-            "description": (meta.get("description") or "").replace("|", "/"),
-            "language": languages_str,
-            "updated": (meta.get("pushed_at") or "")[:10],
+            "entry": entry or {},
+            "gh_description": meta.get("description") or "",
             "category": category,
         })
 
@@ -467,15 +490,15 @@ def main():
             existing.unlink()
             print(f"  RM    {existing.relative_to(REPO_ROOT)} (progetto non piu' trovato)")
 
-    # Raggruppa per categoria secondo CATEGORY_ORDER; dentro ogni gruppo l'ordinamento resta per
-    # data di aggiornamento decrescente, come nella tabella piatta precedente. Un gruppo senza
+    # Raggruppa per categoria secondo CATEGORY_ORDER; dentro ogni gruppo l'ordinamento è per data
+    # di inizio decrescente, presa da personal_meta.json. Un gruppo senza
     # righe (es. nessun progetto scoperto in questa corsa ricade in "uncategorized") non produce
     # un'intestazione vuota nell'index.
     rows_by_category = {key: [] for key in CATEGORY_ORDER}
     for row in index_rows:
         rows_by_category.setdefault(row["category"], []).append(row)
     for rows in rows_by_category.values():
-        rows.sort(key=lambda row: row["updated"], reverse=True)
+        rows.sort(key=lambda row: row["entry"].get("inizio") or "", reverse=True)
 
     for lang in LANGS:
         labels = LABELS[lang]
@@ -493,12 +516,16 @@ def main():
             index_lines.append(f"## {category_label}")
             index_lines.append("")
             index_lines.append(
-                f"| {labels['col_project']} | {labels['col_description']} | {labels['col_language']} | {labels['col_updated']} |"
+                f"| {labels['col_project']} | {labels['col_description']} | {labels['col_technologies']} | {labels['col_period']} |"
             )
             index_lines.append("|---|---|---|---|")
             for row in rows:
+                entry = row["entry"]
+                description = ((entry.get("descrizione") or {}).get(lang) or row["gh_description"]).replace("|", "/")
+                technologies = (entry.get("tecnologie") or "").replace("|", "/")
+                period = format_period(lang, entry) or ""
                 index_lines.append(
-                    f"| [{row['title']}]({row['slug']}.md) | {row['description']} | {row['language']} | {row['updated']} |"
+                    f"| [{row['title']}]({row['slug']}.md) | {description} | {technologies} | {period} |"
                 )
             index_lines.append("")
         index_path = PERSONAL_DIR / f"index{LANG_SUFFIX[lang]}.md"
